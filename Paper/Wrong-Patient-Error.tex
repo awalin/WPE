@@ -1,0 +1,341 @@
+\documentclass[conference,final]{IEEEtran}
+\usepackage{cite}
+%\usepackage[small,compact]{titlesec}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{array}
+\usepackage{balance}
+\setlength{\belowcaptionskip}{-10pt}
+\usepackage[belowskip=-15pt,aboveskip=0pt]{caption}
+\linespread{0.9}
+\addtolength{\parskip}{-0.5mm}
+%\addtolength{\belowcaptionskip}{-1mm}
+%\addtolength{\abovecaptionskip}{-1mm}
+
+\addtolength{\floatsep}{-8mm}
+
+%\addtolength{\textfloatsep}{-1mm}
+
+\addtolength{\topsep}{-0.5mm}
+\addtolength{\partopsep}{-0.5mm}
+\addtolength{\itemsep}{-1mm}
+\addtolength{\topskip}{-0.5mm}
+
+\renewcommand\floatpagefraction{.9}
+\renewcommand\topfraction{.9}
+\renewcommand\bottomfraction{.9}
+\renewcommand\textfraction{.1}   
+\setcounter{totalnumber}{50}
+\setcounter{topnumber}{50}
+\setcounter{bottomnumber}{50}
+
+\setlength{\tabcolsep}{1pt}
+
+
+\begin{document}
+%
+% paper title
+% can use linebreaks \\ within to get better formatting as desired
+\title{Strategies to avoid selecting the wrong patient}
+% author names and affiliations
+% use a multiple column layout for up to three different
+% affiliations
+\author{
+\IEEEauthorblockN{Awalin Sopan}
+\IEEEauthorblockA{Department of Computer Science\\
+University of Maryland\\
+Email: awalin@cs.umd.edu }
+
+\and
+\IEEEauthorblockN{PJ Rey}
+\IEEEauthorblockA{Department of Sociology\\
+University of Maryland\\
+Email: pjrey@umd.edu}
+
+\and 
+\IEEEauthorblockN{Brian Butler}
+\IEEEauthorblockA{ College of Information Studies\\
+University of Maryland\\
+Email: bsbutler@umd.edu}
+
+\and
+\IEEEauthorblockN{Ben Shneiderman}
+\IEEEauthorblockA{Department of Computer Science\\
+University of Maryland\\
+Email: ben@cs.umd.edu}
+}
+
+% make the title area
+\maketitle
+\vskip -50mm
+\begin{abstract}
+Social-media-supported academic conferences are becoming increasingly global as people anywhere can participate actively through backchannel conversation. It can be challenging for the conference organizers to integrate the use of social media, to take advantage of the connections between backchannel and front stage, and to encourage the participants to be a part of the broader discussion occurring through social media. The backchannel conversation during academic conference can offer key insights on best practices, and specialized tools and methods are needed to analyze this data. In this paper we present our two fold contribution to enable organizers to gain such insights. First, we introduce Conference Monitor (CM), a real time web-based tweet visualization dashboard to monitor the backchannel conversation during academic conferences. We demonstrate the features of CM, which are designed to help monitor academic conferences, and its application during the conference Theorizing the Web 2012 (TtW12). Its real time visualizations helped identify the popular sessions, the active and important participants, and trending topics. Second, we report on our retrospective analysis of the tweets about the TtW12 conference and the conference-related follower-networks. The $4828$ tweets from $593$ participants resulted in $8.14$ tweets per participant. The $1591$ new follower-relations created among the participants during the conference confirmed the overall high volume of new connections created during academic conferences. On average a speaker got more new followers than a non-speaker. A few remote participants also gained comparatively large number of new followers due to the content of their tweets and their perceived importance. There was a positive correlation between the number of new followers of a participant and the number of people who mentioned him/her. Remote participants had a significant level of participation in the backchannel and live streaming helped them to be more engaged. 
+\end{abstract}
+
+%\IEEEpeerreviewmaketitle
+
+\section{Introduction}
+In many fields, social media (e.g., Twitter and blogs) communication has become an important aspect of the typical conference experience. Prior to the conference, organizers can provide important logistical details through social media. Participants also use social media to actively discuss presentations (often interacting with the presenters themselves). Finally, after a conference, bloggers often review the activities and offer important insights on improvement. This conversation occurring on digital media is frequently referred to as `backchannel'. Backchannel communications help the conference participants make new connections and may stimulate conversation between peers. It can foster relationships between the people attending in person and the people who are following it remotely. Nonetheless, as conferences generally have short durations, the backchannel data must be immediately accessible in an organized fashion to be useful for the organizers. Real-time feedback can enable them to intervene when problems become apparent and to reinforce desirable behaviors. For example, conference organizers may wish to identify active and influential participants who may be reporting on the conference to a broader public. By reacting in a timely manner to concerns raised by such participants organizers may be able to improve the overall impression of the conference. Spikes in activity may connote key events or issues. Organizers may observe the activity patterns to predict when interventions may be most effective and how discussion evolves throughout the conference. Our goal was to design a tool to help conference organizers better integrate social media. We worked closely with the organizers of the Theorizing the Web 2012 (TtW12) conference, and our collaboration with the TtW12 organizers helped us make the design decision for CM on what data to present for monitoring the conference and how to present them from an organizer's point of view. TtW12 was unique in that the organizers (one of whom is a second author to this paper) explicitly set forth to experiment with how social media could be used to improve the conference experience. The study led to the following contributions:
+
+\textbf{1. Development of Conference Monitor (CM):} We developed a web app for real time visualization of the backchannel participation during a conference to address the needs of both organizers and participants. CM is designed to capture the characteristics that are specific to conferences. The novelty of CM lies in its added utilities targeted for conference organizers, its support for annotation, comparisons of participants, comparisons of sessions and an easy-to-understand overview of the conversation. Its session-based and role-based filtering help both organizers and general users understand the activities regarding a particular session of interest or particular group of participants. It enables the organizers to annotate specific time points during the conference. Using CM's real time visualizations, TtW12 organizers identified the active people, the popular sessions, the recurring topics and the pace of tweets during the conference. 
+%%They could also mark specific time points of interest. 
+
+\textbf{2. Retrospective analysis of the collected data:} We analyzed the collected data during TtW12, which provided detailed insights regarding the social network, the backchannel conversation content (retweets, URLs, etc.), and the participation of people during the conference. Conferences help create new connections among the participants but the growth of a social network due to a conference was not studied before. In our analysis, for the first time, we segregated the social network that is formed due to and during the conference and analyzed the evolution of the networks of the participants. We hypothesized about the network growth among the people who tweeted about TtW12 and later tested those hypotheses with the data set. 
+
+%// add why network analysis is important, existing ones present only the snap shot, like event graph, but they do not have the evolution... 
+\section{Related Work}
+Analyzing online interactions and information sharing during popular events has opened a broad spectrum of research questions. McCarthy et al. \cite{danah} discussed the advantages and disadvantages of having backchannels during an ongoing event. This vast data of backchannel conversation can be understood if aggregated properly and made available in a way easier for domain experts to analyze. Tweetgeist \cite{Tweetgeist} attempts to analyze the structure of broadcast events by visualizing the relevant tweet time line, though time line alone is not sufficient to understand an event as a whole. TwitInfo \cite{twitinfo} leverages the understanding of participation in micro-blogging during an event by showing a map view and sentiment view along with the time line. Diakopoulos et al. \cite{Diakopoulos} built a system to present tweets in the context of journalism. Another notable system is the visual backchannel\cite{backchannel} where the content flow is shown using a stream graph view. However these systems presenting overviews of the tweets do not attempt to identify the influential participants, or do not address the infrastructural features of academic conferences which is different from general events. Conference Monitor, on the other hand, focuses on monitoring conferences from the organizers' point of view so they can take action during the conference and see the effects. Ebner et al. showed that tweets have limited ability to convey meaningful information to the remote participants \cite{granular}. But again, they could not distinguish the in-person participants from the remote ones. Remote participants can help the event reach a broader audience. Starbird et al. showed in \cite{revolution} that a substantial proportion of the people tweeting updates on the 2011 Egyptian Revolution were not on the ground in Cairo. Similarly, micro-blogging during natural disasters can bring together both people on the ground and people who are not, and create a social network of people providing them situational awareness \cite{disaster}. The followers-networks and mentions-networks expand within a very short time during events. Since network growth (followers) for in-person and remote participants during an event might not follow the same pattern, we aim to analyze that fact in our study. 
+
+While in-person participants and remote participants are important groups to compare, even among the in-person participants, we can find people with different roles \cite{ross2011enabled}. Identifying people with influential online personas can be useful for the organizers. EventGraph \cite{eventgraph} can help identify those people who become important hubs during events. The people and topics both face rapid change during events. Reinhardt et al. \cite{twitterinconf} surveyed how the use is different before, after and during conferences by organizers and participants. Their survey identified that the reason of participants' Twitter usage during conferences are sharing resources, keeping online presence, participating in parallel discussions, taking notes, communicating with others, and posing questions. Also analysis of citations via tweeting revealed how scientific works are cited during conferences \cite{citation}. Resource sharing and communicating are closely related with retweets and URL sharing. Suh et al. \cite{retweet} showed retweetability of a tweet is correlated with presence of a URL and hashtags, and the number of followers and followees also influence retweetability. While their study was done with randomly sampled tweets, the result may differ for conference related tweets. Having a lot of followers may not indicate the importance of a Twitter user\cite{million}; importance of a participant need to be measured in the context of the event itself rather than global metrics.
+
+\section{Background of the Study}
+The Theorizing the Web 2012 conference was held on $April 14$. The conference had a designated hashtag \textit{$\#$TtW12} and Twitter account \textit{@TtW\_conf}. After the success of the first Theorizing the Web conference in $2011$ the organizers decided to run a follow-up event. They observed the participants' enthusiasm regarding the backchannel conversation, which was particularly active due to the fact that Internet researchers---almost by definition---are a highly-connected group. We categorized the participants (people who tweeted with the conference hashtag) in the conference backchannel into two roles: 
+\begin{itemize}
+	\item In-Person Participants: people who were present at the conference venue in person. They include both speakers and non-speakers.
+  \item Remote Participants: people not present at the venue in person but who tweeted about the conference.
+\end{itemize}
+
+The organizers created several strategies to better integrate the face-to-face and digital aspects of the conference. These strategies include ensuring that every in-person participant had free, high-speed WiFi access, providing particular hashtags for each session so the participants could mention which session they were tweeting about, live-streaming the entire event so that people could watch the talks remotely in real-time, including a ``Twitter backchannel moderator'' in each panel to identify questions from remote participants and ask them directly to the panelists, projecting the Twitter feeds in the hallways and the reception areas, distributing the speakers' Twitter handles so that the participants could tweet with appropriate mentions, and making the keynote a participatory interview rather than a top-down lecture so that incoming questions from backchannel participants (both in-person and remote) could be articulated to the speaker by the interviewer.
+We collected all the tweets having the word \textit{$\#$TtW12} and from the account \textit{@TtW\_conf} via a continuously running call to Twitter using streaming API. The data set contained tweets with hashtag $\#TtW12$ from March $14th$ (one month before the event) to April $27th$ (two weeks after the event), $4828$ tweets in total and, on average $8.14$ tweets per person. 
+
+\textbf{Session hashtags:}TtW12 had 4 sessions. The first three sessions each had three parallel tracks, located in different rooms. Session hashtags were in the pattern: room number followed by session number, so the track in room b during session 1 had the hashtag \textit{\#b1}. Those hashtags were broadcasted through the conference website before the event and also written in the conference rooms. This use of session hashtags helped compare the sessions.
+
+\textbf{Identifying the in-person participants:}The conference organizers collected the Twitter handles of the in-person participants and this way, we differentiated the in-person and remote participants. 
+
+\begin{figure*}[htbp]
+	\centering
+		\includegraphics[width=0.95\textwidth]{pix.png}
+	\caption{Conference Monitor web app user interface. a) Hashtag view b) Tweet feed view c) Time line view, d) User table, e) Tweet feed, e) Annotation marked by organizers shown with triangles, and f) Highlighted tweets from organizers. The role-based filter buttons are below the user table. The tweets from the organizers are highlighted in the Tweet feed view.}
+	\label{fig:pix}
+\end{figure*}
+
+\section{Conference Monitor and its Application} 
+In this section we describe the features of CM and the insights delivered by the corresponding features during TtW12. CM's web interface consists of four coordinated panels: 
+\begin{itemize}
+	  \item Time line: A time line of tweets, the y-axis on the line shows number of tweets per $15$ minute interval. It helps compare the sessions (e.g., which sessions generated more conversation, who were the active people during a session) and to observe the pace of tweets.
+		\item Hashtags: The tag cloud of hashtags occurring in the tweets. Identifies trending and popular hashtags.
+		\item User table: A table presenting relevant information about the participants. Identifies active participants (with more tweets) and popular participants (being mentioned and retweeted more).
+	  \item Tweet feed: Tweets occurring during the conference having the conference hashtag. 
+\end{itemize}
+
+Fig \ref{fig:pix} shows the unfiltered view of the system. The organizers can select tweets of interest using faceted filtering options. All the views can be filtered based on time, session, user and hashtag. This cascaded filtering can be used in combination with one another to generate complex queries regarding the tweets. The filters are:
+ 
+\begin{itemize}
+\item Time frame (selected from the time line view)
+\item Session (selected from the session list: 1, 2, 3 or 4)
+\item Conference role (in-person, remote, speakers)
+\item Hashtag (chosen from the  hashtag view)
+\item Participant (chosen from the user table)
+\end{itemize}
+
+After filtering, the tweet pace of that filtered set can be added in the main time line view as a separate line. Each of these lines is drawn with a different color and is superimposed over the existing ones. This enables the simultaneous comparison of different subsets of tweets.
+
+\subsection{Time line of tweets}
+The time line view shows the pace of the tweets. This view can be zoomed and then the tweet feed shows tweets, the hashtag view shows the tag clouds from tweets, and the user table shows the participants who tweeted at that selected time frame. Also from a drop down list of predefined temporal window, a particular session, or the last 24 hours, or last week or last month can be selected. 
+
+\textbf{Comparing TtW12 sessions using the time line:}
+The tweet pace pattern in the time line view showed (in Fig \ref{fig:pix}) that lunch and other break times had low tweet volume as expected. Interestingly, the tweet volume was higher in sessions before the lunch break and it declined after the break. In both cases the rate of tweets were similar but the number of participants dropped. It might be an indicator that some people left after lunch, just got tired of tweeting, or, maybe, they were paying close attention to the talk at the expense of tweeting. 
+
+\begin{table}[tbp]
+  
+  \addtolength{\belowcaptionskip}{-50pt}	
+	\setlength\abovecaptionskip{0pt}%
+  \setlength\belowcaptionskip{10pt}%
+\caption{Participation before and after lunch }
+	\label{tab:tweetbytime}
+		\centering
+		\begin{tabular}{|p{1.5cm}|r|r|>{\raggedleft\arraybackslash}p{2cm}|}
+\hline\hline %inserts double horizontal lines
+         Time & Total tweets  & Participants & Average tweets per participant\\% inserts table
+%heading
+\hline % inserts single horizontal line
+8 am to 1 pm & $2151$ & $281 $ & $7.6$ \\
+\hline
+1 pm to 6 pm & $1435$ & $197$ & $7.8$\\
+\hline
+	\end{tabular}   
+%\addtolength{\abovecaptionskip}{-100pt}
+	\end{table}
+
+As conferences usually have several sessions covering specific topics, it is often desirable to follow tweets from a specific session rather than going through all of the tweets. CM's session-based filtering shows the tweets, participants, and hashtags during a selected session. Fig \ref{fig:session1-new} (Top) shows the view after filtering to session 1. The morning sessions in rooms b, c and d were held in parallel, but the room d session (hashtag d1) had the least Twitter activity. Similarly, b2, c2 and d2 were hashtags for parallel sessions in different rooms during session 2, and all had comparable levels of activity. The afternoon sessions b3, c3 and d3 had comparatively low backchannel activity (Fig \ref{fig:session1-new}). Sorting the user table by tweet count showed which participants were more active during the selected session.
+
+\begin{figure*}[htbp]
+	\centering
+		\includegraphics[width=0.95\textwidth]{session1-new.png}
+		\setlength{\belowcaptionskip}{-10mm}
+	\caption{Top: Session 1: b1,c1, and d1 sessions in parallel. The tag cloud shows low activity about session d1. Bottom: Session3: b3, c3 and d3. b3 had the least activity on Twitter.}
+	\label{fig:session1-new}
+\end{figure*}
+
+During the keynote conversation there were $698$ tweets, $283$ of those mentioned the keynote speaker (Andy Carvin, \textit{@andycarvin}) and $175$ mentioned the interviewer (Zeynep Tufekci, \textit{@techsoc}), either quoting the speakers or asking them direct questions. The interviewer read, synthesized, and responded to the Twitter stream while asking questions to the interviewee. The speaker replied to the participants even after the conference with $15$ tweets.  
+\begin{figure*}[htbp]
+		\includegraphics[width=0.95\textwidth]{katypearce.png}
+		%\setlength{\belowcaptionskip}{-10pt}
+		%\setlength{\abovecaptionskip}{-10pt}
+	\caption{CM after selecting the participant Katy Pearce, shown with blue line. The hashtag view shows hashtags in her tweets indicating her interest in several sessions.}
+	\label{fig:katypearce}
+\end{figure*}
+
+\subsection{Hashtag view}
+The hashtag view shows the tag cloud of the top $20$ most frequent hashtags. The size of the hashtag indicates the frequency, and the color indicates its age (time spent since its first occurrence). Older hashtags are displayed in brown and newer ones are in green. With this visualization, conference organizers can see if a hashtag is popular in spite of its recency. After selecting a hashtag, the tweet feed view shows only the tweets with that hashtag, and the user table shows only the participants who tweeted with that hashtag. A time line can be added in the main time line view to show the propagation of tweets with the selected hashtag and compare it with other hashtags' time lines in the same view.
+
+The tag cloud view for TtW12 showed that the session tags were the most used hashtags (for example the tags c1, b3, etc.), indicating that the participants welcomed this idea of session tags. For the parallel sessions, we could see which room had more activity by the size of its hashtag (see Fig \ref{fig:session1-new}). TtW12 organizers estimated that, on average, $25$ people were physically present in each track.
+
+\subsection{User table}
+The user table provides an overview of the participants during the conference. Some less active participants may be mentioned many times during the conferences, especially if s/he is a speaker. Therefore only tweet counts do not give the full picture of the importance of that participant. With CM, active and popular participants can be identified easily from the total tweets, `mentioned in' and `mentioned by' columns. Unlike other existing tools, ours presents the metrics relevant in the context of the conference. Participants in conferences assume various roles, and some might want to follow tweets only from the speakers or the organizers. One novel feature of CM is its role-based filtering associated with the table: it can be used to separately examine the activity of in-person participants, speakers, and remote participants. If the remote participants filter is chosen, then only the remote participants are shown in the table and all the other views also change accordingly. Also after choosing a participant from this table the tweet feed view shows the tweets from and mentioning that account providing an easy understanding on what s/he is talking and what is being talked about him or her. As Twitter itself does not show conversation as a thread, the tweet feed view in CM, showing both tweets from and about a participant, helps understand the whole context of a conversation.
+
+\textbf{Identifying active participants:}
+After keeping only the speakers, the table showed that among the speakers, the most active participant was \textit{@KatyPearce}, who tweeted and got mentioned many times. Selecting this participant (Fig \ref{fig:katypearce}) showed the hashtags appeared on this participant's tweets in the hashtag view and the tweets from and about her in the tweet feed view. This participant's time line (added in the main time line view) demonstrated her active participation throughout the whole event. 
+Among the remote participants Jeffery Keefer was the most active one (Fig \ref{fig:nonattendees}) with the most number of tweets. With total $139$ tweets he got $18$ new followers while watching the live streaming of TtW12. His tweet stream in the time line showed that he was active most of the time and became inactive in the backchannel during the keynote speech.
+
+\subsection{Annotation} 
+The visualizations of CM gives an overview of the conference to anyone but an organizer might also want to annotate specific moments of conference for future reference and go back to that time point for further analysis. Therefore we added annotation capability for the organizers. They can annotate significant happenings during the conference on the time line view. For example, they can save a note such as: \textit{``Emailed the person with most number of followers at 12 am.''} and annotate the time when they performed that action. Also, CM automatically annotates the tweets from the organizers and their timestamps. These time points of annotation and tweets from the organizers are marked with yellow triangles below the main time line view and hovering over them shows the time and annotation at that point. Selecting a triangle indicating tweets from the organizers highlights the corresponding tweet in the feed. Organizers can select time frame before and after the actions to assess the effect of those actions. 
+% example: annotate lunch break.
+
+\section{Retrospective analysis}
+In this section we discuss the second part of our contribution, our retrospective analysis of TtW12 backchannel, focusing on the topics, contents, and network growth of participants during the conference.
+
+\subsection{Topics}
+Our word-frequency based analysis showed that the most frequent words in the conference tweets were about social networking services Twitter, Facebook and Pinterest as well as journalism, politics and privacy. The contents of tweets also varied during the conference. Before the conference, the tweets were more about the conference location, housing, getting there, food, etc. Tweets from the organizers relevant to those topics got more retweets before the conference. This highlights the importance of social interaction even before the conference. Tweets that are not directly related to the conference topics also played important role for the participants. For example, the live streaming was not working for one of the sessions and the organizers readily fixed the problem after reading a tweet about the situation. When one conference participant was looking for housing near the venue, that tweet was retweeted by other conference followers. The backchannel moderators in TtW12 helped identify those tweets and made an immediate organizational decision that was appreciated by the participants.
+
+\begin{table}[tbp]  
+  \addtolength{\belowcaptionskip}{-50pt}	
+	\setlength\abovecaptionskip{0pt}%
+  \setlength\belowcaptionskip{10pt}%
+  \caption{Participation of in-person and remote participants.}
+	\label{tab:tweets-of-participants}
+	\centering
+		\begin{tabular}{|l|>{\raggedleft\arraybackslash}p{1.6cm}|>{\raggedleft\arraybackslash}p{1.6cm}|>{\raggedleft\arraybackslash}p{0.8cm}|}
+			\hline\hline %inserts double horizontal lines
+             &  In-person participants & Remote participants  & Total \\% inserts table
+%heading
+\hline % inserts single horizontal line
+Total tweets & $3728$ ($77\%$) & $1100$ ($23\%$) & $4828$\\ % inserting body of the table
+\hline
+Retweets & $1142$ ($66\%$)  & $585$ ($34\%$) & $1727$ \\
+\hline
+Total participants & $92$ ($15.5\%$) & $501$ ($85.5\%$) & $593$\\
+\hline
+Average tweets per participant & $40.2$ & $2.2$ & \\
+\hline
+Average retweets per participant & $12.4$ & $1.2$ & \\
+\hline\hline % inserts single horizontal line   
+		\end{tabular}
+	
+\end{table}
+
+\subsection{Participation of people}
+Among all the $593$ participants in the backchannel, $523$ people mentioned or replied to or retweeted other people's tweets, which indicates the overall trend to communicate with others. Among all the $92$ in-person participants, $62$ were non-speakers. All of the $30$ speakers tweeted about the conference. The remote participants followed the event via reading the Twitter feed or watching live streaming. In total $24$ people watched the live steaming remotely and contributed to the backchannel conversation with $236$ tweets in total ($9.8$ tweets on average) and $43$ retweets ($1.8$ retweets on average). In general, the activity level of the live-streamers was higher than other remote participants and lower than the in-person participants (table \ref{tab:tweets-of-participants}).
+
+\subsection{Retweets and URLs}
+Fig \ref{fig:urlretweets} shows the breakdown of tweets into retweets and URL-containment using a tree map, depicting that most of the non-retweeted tweets did not have any URLs and $26.7\%$ of the tweets with a URL were retweeted. Retweets with URLs mostly had links to blog posts on relevant topics, live stream video, online flier of the conference, list of participants and panel spotlight. On the other hand retweets without URLs were mostly relevant to the topics discussed in the conference (specially during the keynote conversation), positive feedback about the conference, controversial speech (e.g., one participant used the term ``digital native'' in a tweet, which incited criticism from several other participants). In total $338$ URLs were posted via $1124$ tweets averaging $3.3$ per URL. Among them $48\%$ URLs were not reshared or retweeted. Those were mostly part of conversations, for example sending a picture or video URL to another person or containing a personal photo at the venue.
+
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.45\textwidth]{nonattendees-new.png}		
+		\addtolength{\belowcaptionskip}{8mm} 
+	\caption{Time line view after filtering down to remote participants only. Blue line is for the tweets from all the remote participants, and orange line is for the tweets only from Jeffery Keefer.}
+	\label{fig:nonattendees}
+%\end{figure}
+
+%\begin{figure}[tbp]
+	\centering
+		\includegraphics[width=0.45\textwidth]{tree-map-ppt.png}
+%\addtolength{\abovecaptionskip}{15mm}  
+	\caption{Tree map showing the division of tweets by retweets and URL. $1071$ tweets were retweeted at least once, among them $287$ had at least one URL. $287$ tweets with URL were shared $562$ times, averaging $1.9$ retweets per tweet. On the other hand, $784$ tweets without URLs were retweeted $1165$ times, averaging $1.5$ retweets per tweet.}
+	\label{fig:urlretweets}
+\end{figure}
+
+boyd et al. showed in general, $52\%$ of retweets contained a URL and $22\%$ tweets contained a URL \cite{boyd2010tweet}, whereas in our case $31.9\%$ of retweets contained a URL (different from the previous studies of overall tweets) and $23.28\%$ of tweets contained a URL (similar to previous work). Also, in Twitter only $3\%$ of tweets were retweets, whereas in the case of this conference, $35.77\%$ of tweets were retweets. In our data set, a tweet with URL had a $51\%$ probability of being retweeted. 
+\begin{figure}[htb]
+	\centering
+		\includegraphics[width=0.45\textwidth]{followergrowth-compare.png}
+	\caption{Addition of new followers during the conference week. Speakers got $696$ new followers, non-speaker in person participants got $864$ and remote participants, $563$.}
+	\label{fig:followergrowth-compare}
+\end{figure}
+\subsection{Network growth in context of the conference}
+By attending a conference, individuals expect to expand their network of contacts. While Twitter followers are not synonymous with an individual's professional network, gaining followers is a form of expanding one's network. Remote participants might also be able to engage in such network development by joining the bachchannel conversation. This leads to questions of whether remote participation through the conference backchannel, at least to some degree, can lead to significant network development for the individuals. For this analysis we collected the followers-network data of the participants from \textit{April 9} to \textit{April 15}. We filtered out the followers who did not tweet about the conference; therefore, the remaining network consisted only of the followers who were also explicitly interested in the conference. 
+\begin{align*}
+& \text{Follower growth of a participant } \\
+= & \text{ The number of conference related new followers} \\
+= & \text{ Number of total new followers } - \\
+  & \text{ number of new followers who did not tweet}\\
+  & \text{ about the conference}
+\end{align*}
+There were $858$ follower connections present on the $9th$ April and, as the conference day approached, the number of new followers grew (see Fig \ref{fig:followergrowth-compare}). Finally, until \textit{April 15}, $1591$ new connections were made among $364$ people. The followers-network growth had a sharp drop on the day before the conference (people were traveling to attend the conference and were not active online) and most of the new connections were established on the day of the conference. From the pie chart we can see that $33\%$ of the new connections were made to the speakers indicating people's interest towards the speakers. 
+\begin{table*}[htbp]
+	\centering
+	  \addtolength{\belowcaptionskip}{-50pt}	
+	\setlength\abovecaptionskip{0pt}%
+  \setlength\belowcaptionskip{10pt}%
+	\caption{Follower growth hypotheses and ANOVA result (adjusted $R^2 = 0.589$).}
+	\label{tab:hypothesis}
+		\begin{tabular}{|>{\raggedright\arraybackslash}p{.35\textwidth}|>{\raggedright\arraybackslash}p{.10\textwidth}|>{\raggedright\arraybackslash}p{.44\textwidth}|}
+			\hline\hline %inserts double horizontal lines
+
+Hypothesis  & F, p & Result \\ % inserts table
+%heading
+\hline % inserts single horizontal line
+\textbf{H1:} Speakers, general in-person participants, and remote participants will differ with respect to how many conference related new followers they gain. Specifically: follower growth for speakers $>$ follower growth for non-speaker in-person participants $>$ follower growth for remote participants & $F(2,599) = 22.495$, $p < 0.001$ & Statistically significant.  We expected in-person participants to have more detailed, topically-relevant tweets than remote participants, thus increasing the attractiveness of their tweets and attracting more followers from the conference community than individuals who are just remotely tweeting about the conference. Participants' role in the conference significantly influenced their conference related network growth.\\ 
+\hline
+\textbf{H2:} Participants who create tweets using the conference hashtag will gain more conference-related followers than those who create fewer tweets using the conference hashtag. Tweeting about the conference will affect the number of followers an individual gains from the conference community.  & $F(1,599) = 12.284$, $p < 0.001$ & Statistically significant effect. Participants with more conference related tweets gained more new conference related followers than participants with fewer tweets.\\
+\hline
+\textbf{H3:} Individual's conference related tweet volume will have a greater impact on the number of followers they gain from the conference community if they are present at the venue. &  $F(2,618) = 4.290$, $p <= 0.05$ & Speakers who tweeted more got more new followers than speakers who tweeted just once. In-person participants also gained more followers by tweeting more, but the same effect was not observed for remote participants. Ninety-eight of the remote participants tweeted more than once but they did not gain significantly more new followers than other remote participants who tweeted once.\\
+\hline\hline % inserts single horizontal line   
+		\end{tabular}
+	\end{table*}
+\begin{figure*}[htbp]
+	\centering
+		\includegraphics[width=0.95\textwidth]{h3.png}
+	\caption{ANOVA test results of hypotheses 1, 2 and 3. Covariates appearing in the model: followers count = $2104.88$}
+	\label{fig:h3}
+\end{figure*}
+Although the remote participants gained fewer average number of new followers than the in-person participants, a few of them managed to get as many as $18$ new followers in spite of their sparse activity. Their tweets were either retweeted by the organizers or they were mentioned in the organizers' tweets. In this case, being mentioned by important people who have many followers related to the conference gave them more visibility and helped expand their network. One remote participant (Marc Smith) gained $23$ new followers. The only 2 tweets he made were sharing the event graph of the conference, which generated immediate retweets. The general conception to gain new followers is to tweet more but on the context of conference quality of tweets is as important as their quantity. This emphasizes the importance of analyzing tweets and network growth differently in the context of a conference. Observing the follower growth pattern, we came up with three hypotheses and performed an ANOVA test controlling for the number of followers and number of conference community followers. The hypotheses and results are presented in table \ref{tab:hypothesis} and in Fig \ref{fig:h3}.
+
+\subsection{Mentions}
+We also observed a positive correlation ($0.66$) between the number of times participants were mentioned and their total tweets. The mention-network diagram generated with NodeXL \cite{Smith09Analyzingsocialmedia} in Fig \ref{fig:mentiongraph} shows that the most mentioned people were often also the central people in their clusters. They were \textit{@acarvin} (keynote speaker), \textit{@pjrey} (organizer), \textit{@nathanjurgensen} (organizer), \textit{@TtW\_conf} (the conference account), \textit{@dfreelon}, \textit{@racialicious}, and \textit{@katyperce} (most active speaker). \textit{@techsoc} (interviewer of the keynote speaker), \textit{@TahrirSupply} and \textit{@SultanaAlQassemi} were mentioned mostly during the keynote speech and they belonged to the same cluster. Twitter usage during the Arab Spring was a key discussion topic during that session as keynote Andy Carvin covered that event as a journalist.
+
+Speakers were repeatedly mentioned and gained more followers. Our analysis showed that the number of new followers of a participant and the number of people mentioning him/her had a positive correlation of $0.6258$ supporting our hypothesis that being mentioned by more people would bring more new followers.
+
+\section{Discussion on the Analysis}
+We summarize our findings from the analysis on Twitter usage  during TtW12 in this section.
+
+\textbf{Remote participants can contribute and get benefit:} The tweets revealed that the remote viewers embraced the idea of live streaming, and some remote participants followed the whole event, tweeting about it the whole day and making new connections. Live-streamers tweeted questions to the keynote speaker and his interviewer, tweeted actively and created new connections. One tweet from a live-streamer was:
+	
+``\textit{Thanks to everybody \#TtW12 who made those of us not present in corporality feel so welcome and included. A model for conferences @TtW\_conf}''. 
+
+Since visibility is one of the primary benefits of a conference, marginalizing remote participants in conferences usually discourages their participation. In contrast, TtW12 organizers got repeated feedback on how integrated remote participants felt. One tweeted that he set an alarm to wake up at 6 am in Australia to be part of it. In total, $34\%$ of the retweets were from the remote participants. A high volume of tweets made the conference ``Trending'' in DC-area tweets. Part of this possibly happened due to the actions taken by the organizers. Such visibility can help conferences reach a broader audience who might have a tangential interest in the conference topic. 
+
+\begin{figure}[htbp]
+	\centering
+		\includegraphics[width=0.48\textwidth]{mentiongraph.png}
+	\caption{Several clusters are formed within the mention network. Node size is proportional to the number of times they were mentioned. Edges connecting two cl lusters are drawn with thick lines. }
+	\label{fig:mentiongraph}
+\end{figure}
+
+\textbf{Network growth depends on participant's role:} Followers-network started to grow before the conference and the highest number of new connections occurred on the conference day. The organizers already had many followers who were related to the conference, whereas some participants started with smaller followers-network before the conference and their network expanded during the conference. Significant growth of the followers-network for the speakers (hypotheses 1 and 3) indicates strong interest in speakers. This justifies our filtering by role. One tweet requested the speakers' Twitter handles in their slides. On average each speaker gained $23$ new conference related followers during the conference week whereas each non-speaker gained $13.9$ and each remote participant gained $4.6$. Some remote participants with just a few tweets managed to get higher numbers of new followers because the organizers mentioned them in tweets.
+During the conference, we interviewed speaker Katy Pearce. She mentioned that she keeps her followers up to date about her publications and recent works, and that helps her get more citations for her work. Her suggestion about how to make new connections with other researchers via Twitter was to write thoughtful comments about their work to get their attention, so that they would also follow back.
+
+\textbf{Tweets about conferences should be analyzed differently:} A person with more followers has a broader network of influence in general, but in the context of the conference, their effective network of influence should be determined by their followers who are also concerned about the conference. Their tweets regarding a conference might not be interesting to all of their followers. The total followers count and conference related followers count did not have any positive correlation in our analysis. Therefore instead of using total followers or total memtioens, we suggest that the conference related influence metrics should be their conference related followers count and mention counts. 
+
+\textbf{Session hashtags are useful:} Use of session tags delivered meaningful comparisons of the sessions and analysis of parallel sessions through the real time visualization. Participants could identify who was attending which session by looking at the session tags in the tweets and got updates about other sessions from corresponding tweets. 
+
+\textbf{More participants in the morning sessions:} The total number of participants decreased after the lunch break, which reduced the total activity in the backchannel. But the average tweets per participant did not decrease that much. This indicates some participants were very active throughout the whole day and some stopped being active after the morning sessions.
+
+%\textbf{Data Clean-up and limitation:} One complicating factor was the same hashtag was used both for Theorizing the Web and Teen Tech Week, which happened in March. We rendered the network diagram of the people tweeting with TtW12 and saw two separate clusters of people: one with people from Theorizing the Web and another with Teen Tech Week. We removed tweets and user information of the people in the other cluster to clean up the noisy data before our analysis. 
+
+\balance 
+\section{Future Work and Conclusion}
+Technology and society have always been enmeshed, and digital information is now part of our social lives. The fluid nature of social media communication lets the conversation flow beyond the conference venue and out to the broader public that may have interest in the topics being discussed. Henceforth, the digital aspects of conferences should not be ignored. Our case study with TtW12 showed CM could help organizers monitor this digital dimension during the conference in real-time. CM enables the identification of interesting participants and tweeting patterns via simple interactions. Filtering views by time identifies which participants are more active in which sessions and who is mentioned more during a given time frame. The user table can identify the influential and active people in real time. Also the time line view shows how long influential people are active and when they are mentioned. These insights are not easily identifiable otherwise. The real-time visualizations help formulate hypotheses about the conference. CM made possible to follow the topics, sessions or speakers of interest by selecting a hashtag, a participant or a session instead of linearly reading all the tweets. One improvement suggestion from sociologist Marc Smith was to add simple network statistics in the real-time visualization, which we aim to include in future version. The case study also revealed that it is both possible and beneficial to create a bridge between the in-person and remote participants of a conference through the use of technology and social media. We observed a high volume of remote participation and analyzed the network growth in the context of the conference. While prior works studied types and volume of tweets, they did not address the network evolution during such events. The novelty of this analysis lies in the fact that it accounts for only the relevant followers who are also related to the conference. To do this, we also needed to identify which part of the followers-networks was formed due to a person's involvement in the conference. Our method of this identification might have missed some new followers who did not actually tweet about the conference. Further study can shed more light on identifying these silent followers. We wish to use CM for other conferences and evaluate its usefulness in those cases. Our broader goal is to create a platform to monitor online social media conversation and make it useful for situation awareness and intervention in the cases of natural disasters, and national and international events. 
+
+% use section* for acknowledgement
+\section*{Acknowledgment}
+We cordially thank Catherine Plaisant, Anne Rose, Jae-wook Ahn, Rajan Zachariah, Robert Gove, Krist Wongsuphasawat and Sarah Webster for their valuable contribution for this study. This work is supported by the NSF grant $IIS - 0968521$.
+
+\bibliographystyle{IEEEtran}
+\bibliography{conf}
+\end{document}
+
+

@@ -1,0 +1,456 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+        <meta http-equiv="Content-Language" content="en-us" />
+        <link href="http://www.cs.umd.edu/hcil/_styles/screen.css" rel="stylesheet" type="text/css" media="screen" />
+        <link href="http://www.cs.umd.edu/hcil/_styles/menu.css" rel="stylesheet" type="text/css" />
+        <link rel="shortcut icon" href="http://www.cs.umd.edu/hcil/favicon.ico" type="image/x-icon" />
+        <script type="text/javascript" src="http://www.cs.umd.edu/hcil/_scripts/hcil.js">
+        </script>
+        <title>SharpC at Maryland: Wrong Patient Selection Error</title>
+        <script type="text/javascript">
+            var active_page = "research";
+        </script>
+    </head>
+    <body onload="ds_onstate();">
+        <div id="skipnav">
+            <a href="#content">Skip to main content</a>
+        </div>
+        <hr/><!-- #BeginLibraryItem "/Library/searchArea.lbi" -->
+        <div id="search-area">
+            <form action="http://www.searchum.umd.edu/search" method="get" name="search" id="search">
+                <table width="146">
+                    <tr>
+                        <td width="102" align="right">
+                            <input class="input" type="text" name="q" maxlength="255" value="search hcil" onfocus="clearbox(this);"/><input type="hidden" name="site" value="UMCP" /><input type="hidden" name="client" value="UMCP" /><input type="hidden" name="proxystylesheet" value="UMCP" /><input type="hidden" name="output" value="xml_no_dtd" /><input type="hidden" name="as_sitesearch" value="http://www.cs.umd.edu/hcil" />
+                        </td>
+                        <td width="12">
+                            <input type="image" class= "button1" border="0" name="submit" src="/hcil/_img/com/search-button.gif" alt="search" />
+                        </td>
+                        <td width="16">
+                            <a href="#"><img src="/hcil/_img/com/search-trs.gif" alt="search technical reports" border="0" class="button2" onmouseover="MM_showHideLayers('fly-search','','show','hidea','','show','hideRTop','','show')"/></a>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <div id="fly-search">
+                <form action="/localphp/hcil/tech-reports-search.php" method="\\GET" name="frm" id="frm">
+                    Search all online HCIL papers and technical reports records.
+                    <br/>
+                    <input class="input" name="text" size="15" value="search trs" align="left" onfocus="clearbox(this);"/><input type="image" border="0" name="submit" src="/hcil/_img/com/search-button.gif" alt="search" />
+                    <br/>
+                    <a href="#" onclick="MM_showHideLayers('fly-search','','hide','hidea','','hide','hideRTop','','hide')"><span class="close">close window</span></a>
+                </form>
+            </div>
+        </div>
+        <!-- #EndLibraryItem --><!-- logo -->
+        <div id="logo-image">
+            <div id="hcil-logo">
+                <div id="hcil-logoImg">
+                    <a id="logoLink" href="/hcil/" name="logoLink"><img src="/hcil/_img/com/logo-hcil-int.jpg" alt="HCIL Home Page" width="190" height="86" /></a><a href="/hcil/"><img src="/hcil/_img/com/logo-hcil-int.jpg" width="190" height="86" border="0" /></a>
+                </div>
+            </div>
+            <script src="/hcil/_scripts/php/randomtopimage.js" type="text/javascript">
+            </script>
+        </div>
+        <!-- top nav and title areas -->
+        <div id="navbar-umd">
+            <a href="http://www.umd.edu" onMouseOver="CS_clearNav()"><img src="/hcil/_img/com/navBar-left.gif" width="190" height="26"/></a>
+        </div><!-- top navigation -->
+        <div id="nav-buttons">
+            <div id="navigation">
+                <ul>
+                    <li id="main_news">
+                        <a href="/hcil/about/news.shtml" onfocus="blurLink(this);" onmouseover="CS_clearNav(1)">News + Events</a>
+                    </li>
+                    <li id="main_about">
+                        <a href="/hcil/about/" onfocus="blurLink(this);" onmouseover="CS_clearNav(2)">About HCIL</a>
+                    </li>
+                    <li id="main_people">
+                        <a href="/hcil/members/fac-staff-admin.shtml" onfocus="blurLink(this);" onmouseover="CS_clearNav(3)">People</a>
+                    </li>
+                    <li id="main_research">
+                        <a class="active_li" href="/hcil/research/" onfocus="blurLink(this);" onmouseover="CS_clearNav(4)">Research</a>
+                    </li>
+                    <li id="main_publications">
+                        <a href="/hcil/pubs/tech-reports.shtml" onfocus="blurLink(this);" onmouseover="CS_clearNav(5)">Publications</a>
+                    </li>
+                    <li id="main_academics">
+                        <a href="/hcil/academics/" onfocus="blurLink(this);" onmouseover="CS_clearNav(6)">Academics</a>
+                    </li>
+                    <li id="main_sponsorship" class="final">
+                        <a href="/hcil/sponsorship/" onfocus="blurLink(this);" onmouseover="CS_clearNav(7)">Sponsorship</a>
+                    </li>
+                </ul>
+            </div>
+            <hr/>
+            <div class="clear">
+            </div>
+        </div>
+        <hr/>
+        <div id="content-wrap" class="one-col">
+            <div id="wrap">
+                <div id="content">
+                    <div id="main">
+                        <div align="center">
+                            ~ SharpC at Maryland: Wrong Patient Error
+                        </div>
+                        <h1 align="center" style="margin-top: 0; "><strong>User Interface Techniques to Avoid Wrong Patient Selection
+                            </strong>
+                            <br/>
+                        </h1><h2>Participants</h2>
+                        <ul>
+                            <li>
+                                <a href="http://www.cs.umd.edu/hcil/members/cplaisant/index.shtml">Catherine Plaisant,</a>
+                                (Co-PI) - Research Scientist, UMIACS, Associate Director of Research at HCIL
+                            </li>
+                            <li>
+                                <a href="http://www.cs.umd.edu/~ben/">Ben Shneiderman,</a>
+                                (Co-PI) - Professor, Computer Science, Researcher (and Founding Director) at HCIL
+                            </li>                            
+                            
+ <li>
+                                Awalin Sopan, Graduate Student in the Department of Computer Science, University of Maryland
+                            </li>
+                            <br/>
+                            Past participants:
+                           
+                            <li>
+                                <a href="http://web.bgu.ac.il/Eng/engn/ise/staff/">Meirav Taieb-Maimon,</a>
+                                Visiting Professor from the Department of Information Systems Engineering, Ben-Gurion University of the Negev
+                            </li>
+                            
+                        </ul>
+                        <h2>Project Description </h2>
+                        <p>
+                            The University of Maryland is one of the nine institutions participating in the <a href="http://www.sharpc.org">National Center for Cognitive Informatics and Decision Making in Healthcare (NCCD)</a>
+                            led by The University 
+                            of Texas Health Science Center at Houston. NCCD is funded by the <a href="http://healthit.hhs.gov">Office of 
+                                the National Coordinator for Health IT</a>
+                            under the Strategic Health IT Advanced Research Projects (SHARP) 
+                            Program.  This program seeks to support improvements in the quality, safety and efficiency of health care  
+                            through advanced information technology. The NCCD award was one of four presented by the Office of the 
+                            National Coordinator for Health Information Technology (ONC) through the American Recovery and Reinvestment  
+                            Act of 2009 to address key barriers to health information technology. NCCD's research focus area is 
+                            Patient-Centered Cognitive Suport.
+                        </p>
+                        <p>
+                            <b>In this project we investigate the user interface and human factor issues in EHR systems that cause the problem of selecting a wrong patient. We suggest user interface techniques 
+                            	that can avoid this class of error and improve patient safety.</b>
+                        </p>
+                        <p>
+                            The source code of all our prototypes is available on request. Please contact Catherine Plaisant 
+                            (plaisant@cs.umd.edu)
+                        </p>
+                        
+                        <h2>Videos</h2>
+                        <ul>
+                            <li>
+                                Twinlist: 
+                                <br/>
+                                <a href="WPE/wpe2.mp4"><strong>Download the video</strong> of the latest version
+                                    of the prototype</a>
+                                (22.6 MB, 1024 x 768 resolution)
+                                <br/>
+                                OR watch it on YouTube:
+                                <iframe width="420" height="315" src="http://www.youtube.com/watch?v=Zh7qLvqrN7w" frameborder="0" allowfullscreen>
+                                </iframe>
+                                <a href="http://www.youtube.com/watch?v=Zh7qLvqrN7w">http://www.youtube.com/watch?v=Zh7qLvqrN7w</a>
+                            </li>
+                            <br/>
+                            
+                        <h2>Project Partners</h2>
+                        <ul>
+                            <li>
+                                University of Kentucky: Todd Johnson
+                            </li>
+                            <li>
+                                University of Texas, Houston: Jiaje Jang and Vimla Patel (PIs of the SHARP Project); Eliz Markovitz. Jorge Herskovic, Elmer V Bernstam, Dean Sittig, Hardeep Singh, Archana Laxmisan, and many more...
+                            </li>
+                            <li>
+                                Washington Hospital Center/MedStar, Washington, DC: A. Zachary Hettinger, Mark Smith
+                            </li>
+                        </ul>
+                        <h2>Sponsorship</h2>
+                        <p>
+                            This work is supported in part by Grant No. 10510592 for Patient-Centered Cognitive Support under the Strategic Health IT Advanced Research Projects Program (SHARP) from the Office of the National Coordinator for Health Information Technology.
+                        </p>
+                        <h2>Related Projects from HCIL</h2>
+                        <table style="width: 100%">
+                            <tr>
+                                <td style="width: 147px">
+                                    <img alt="" src="../members/cplaisant/thumbsofprojects/lifelines.jpg" width="143" height="104" />
+                                </td>
+                                <td>
+                                    <a href="http://www.cs.umd.edu/hcil/lifelines/">Lifelines - Visual summary of a single patient record (1996-1998)</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 147px">
+                                    <img alt="" src="../lifelines/lifelines2-sc.png" width="143" height="104" />
+                                </td>
+                                <td>
+                                    <i><a href="http://www.cs.umd.edu/hcil/lifelines2/">Lifelines2</a></i>
+                                    <a href="http://www.cs.umd.edu/hcil/lifelines2/">:&nbsp; 
+                                        Discovering Temporal Categorical Patterns Across  
+                                        Multiple Records </a>
+                                    <p>
+                                        +++NEWS+++ Oct.2011: Lifelines2 is now integrated in i2b2 and BTRIS (see <a href="http://www.cmns.umd.edu/hot-topics-sub2.htm">UMd news story</a>).
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 147px">
+                                    <img alt="" src="../members/cplaisant/thumbsofprojects/lifeflow.jpg" width="143" height="104" />
+                                </td>
+                                <td>
+                                    <i><a href="http://www.cs.umd.edu/hcil/lifeflow/">LifeFlow</a></i>
+                                    <a href="http://www.cs.umd.edu/hcil/lifeflow/" />:&nbsp; Visualization of event sequences 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 147px">
+                                    <img alt="" src="../lifelines/patternfinder-sc.jpg" width="144" height="103" />
+                                </td>
+                                <td>
+                                    <a href="http://www.cs.umd.edu/hcil/patternfinder/">Searching Categorical Histories with <em>PatternFinder</em>: Query Support for Electronic 
+                                        Health Records </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 147px">
+                                    <img alt="" src="../lifelines/patternfinderinamalga-sc.jpg" width="158" height="92" />
+                                </td>
+                                <td>
+                                    <a href="http://www.cs.umd.edu/hcil/patternFinderInAmalga/"><i>PatternFinder in Amalga</i>: Temporal Query
+                                        and Result Visualization in Action</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 147px">
+                                    <img alt="" src="../lifelines/similan-sc.png" width="158" height="114" />
+                                </td>
+                                <td>
+                                    <a href="http://www.cs.umd.edu/hcil/similan/"><em>Similan</em>: Finding Similar Records from
+                                        Temporal Categorical Data</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #BeginLibraryItem "/Library/footer.lbi" -->
+        <div id="footer-wrap">
+            <div id="footer">
+                <div id="footerLogo">
+                    <a href="http://www.umd.edu"><img src="http://www.cs.umd.edu/hcil/_img/com/logo-umd-footer.gif" alt="univeristy of maryland home page" width="61" height="58" /></a>
+                </div>
+                <div id="footerText">
+                    2012 <a href="/hcil/">HCIL</a>&nbsp;&#124;&nbsp;<a href="/hcil/contact/">Contact</a>&nbsp;&#124;&nbsp;<a href="/hcil/policies.shtml">Policies</a>&nbsp;&#124;&nbsp;<a href="/hcil/site-info.shtml">Site Info</a>&nbsp; 
+                    <br/>
+                    HCIL is a partnership of the University of Maryland Institute for Advanced Computer Studies <a href = "http://www.umiacs.umd.edu/">(UMIACS)</a>
+                    in the College of Computer, Mathematical and Physical Sciences <a href = "http://www.cmps.umd.edu/">(CMPS)</a>
+                    and the College of Information Studies - Maryland's <a href = "http://www.ischool.umd.edu/">iSchool</a>
+                    <br/>
+                </div>
+            </div>
+        </div>
+        <!-- #EndLibraryItem --><!-- #BeginLibraryItem "/Library/dropMenus.lbi" --><!-- drop down menus -->
+        <div id="flyNews" class="topNav">
+            <dl>
+                <dt>
+                    <a href="/hcil/about/news.shtml">News </a>
+                </dt>
+                <dt>
+                    <a href="/hcil/about/events/">Seminars + Events </a>
+                </dt>
+                <dd>
+                    <a href="/hcil/about/events/calendar.shtml">Calendar </a>
+                </dd>
+                <dd>
+                    <a href="/hcil/about/events/seminar-series.shtml">HCIL Seminar Series </a>
+                </dd>
+                <dd>
+                    <a href="/hcil/soh/">Annual Symposium </a>
+                </dd>
+                <dd>
+                    <a href="/hcil/about/events/rfp.shtml">HCIL Service Grants </a>
+                </dd>
+                <dd>
+                    <a href="/hcil/about/events/events-archive.shtml">Events Archives </a>
+                </dd>
+                <dt>
+                    <a href="/hcil/about/awards.shtml">Awards</a>
+                </dt>
+                <dt>
+                    <a href="/hcil/about/jobs.shtml">Job Openings </a>
+                </dt>
+                <dt>
+                    <a href="/hcil/about/press/">For the Press</a>
+                </dt>
+            </dl>
+        </div>
+        <div id="flyAbout" class="topNav">
+            <dl>
+                <dt class="first">
+                    <a href="/hcil/about/">HCIL Overview </a>
+                </dt>
+                <dt>
+                    <a href="/hcil/partnerships/collaborators-sponsors.shtml">Collaborators </a>
+                </dt>
+                <dd>
+                    <a href="/hcil/partnerships/collaborating-groups-people.shtml">Collaborating Groups + People</a>
+                </dd>
+                <dd>
+                    <a href="/hcil/partnerships/academic-visitors.shtml">Academic Visitors </a>
+                </dd>
+                <dt>
+                    <a href="http://www.cs.umd.edu/hcil/partnerships/hcil-membership.shtml">Become a Member </a>
+                </dt>
+                <dt>
+                    <a href="/hcil/about/pictures">Our Lighter Side </a>
+                </dt>
+                <dt>
+                    <a href="http://www.cafepress.com/hcil">HCIL Store</a>
+                </dt>
+                <dd>
+                    <a href="http://www.cs.umd.edu/hcil/about/hcilhand.shtml">Give the HCIL a Hand</a>
+                </dd>
+                <dd>
+                    <a href="http://www.cs.umd.edu/hcil/about/hciltshirt.shtml">HCIL T-shirts for Sale</a>
+                </dd>
+                <dt>
+                    <a href="/hcil/contact/mailinglists.shtml">Join our Mailing List</a>
+                </dt>
+                <dt>
+                    <a href="/hcil/contact/">Contact Us</a>
+                </dt>
+                <dt>
+                    <a href="/hcil/contact/travel_to_hcil.shtml">Visit Us </a>
+                </dt>
+                <dt>
+                    <a href="/hcil/about/hcilmemories.shtml">HCIL Memories Page</a>
+                </dt>
+            </dl>
+        </div>
+        <div id="flyPeople" class="topNav">
+            <dl>
+                <dt>
+                    <a href="/hcil/members/fac-staff-admin.shtml">Faculty/ Staff</a>
+                </dt>
+                <dt>
+                    <a href="/hcil/members/students.shtml">Students</a>
+                </dt>
+                <dt>
+                    <a href="/hcil/members/phd-alumni.shtml">Ph.D. Alumni </a>
+                </dt>
+                <dt>
+                    <a href="/hcil/members/past-members.shtml">Past Members </a>
+                </dt>
+            </dl>
+        </div>
+        <div id="flyResearch" class="topNav">
+            <dl>
+                <dt>
+                    <a href="/hcil/research/">Research Areas</a>
+                </dt>
+                <dd>
+                    <a href="/hcil/research/communities.shtml">Communities</a>
+                </dd>
+                <dd>
+                    <a href="/hcil/research/process.shtml">Design Process </a>
+                </dd>
+                <dd>
+                    <a href="/hcil/research/digital-libraries.shtml">Digital Libraries </a>
+                </dd>
+                <dd>
+                    <a href="/hcil/research/education.shtml">Education</a>
+                </dd>
+                <dd>
+                    <a href="/hcil/research/physical.shtml">Physical Devices </a>
+                </dd>
+                <dd>
+                    <a href="/hcil/research/public-access.shtml">Public Access </a>
+                </dd>
+                <dd>
+                    <a href="/hcil/research/visualization.shtml">Visualization</a>
+                </dd>
+                <dt>
+                    <a href="/hcil/research/summaries.shtml">Research Histories </a>
+                </dt>
+                <dt>
+                    <a href="/hcil/research/faculty-by-research.shtml">Faculty Listed by Research </a>
+                </dt>
+                <dt>
+                    <a href="/hcil/research/project-highlights.shtml">Project Highlights</a>
+                </dt>
+                <dt>
+                    <a href="/hcil/pubs/screenshots/">Project Screenshots</a>
+                </dt>
+            </dl>
+        </div>
+        <div id="flyPubs" class="topNav">
+            <dl>
+                <dt>
+                    <a href="/hcil/pubs/tech-reports.shtml">Online Tech Reports</a>
+                </dt>
+                <dt>
+                    <a href="/hcil/pubs/video-reports.shtml">Video Reports</a>
+                </dt>
+                <dt>
+                    <a href="/hcil/pubs/books/">Books</a>
+                </dt>
+                <dt>
+                    <a href="/hcil/pubs/products.shtml">Products</a>
+                </dt>
+                <dt>
+                    <a href="/hcil/pubs/presentations/">Presentations </a>
+                </dt>
+            </dl>
+        </div>
+        <div id="flyAcademics" class="topNav">
+            <dl>
+                <dt>
+                    <a href="/hcil/academics">Studying HCI</a>
+                </dt>
+                <dt>
+                    <a href="/hcil/academics/graduate-studies.shtml">Graduate Studies in HCI </a>
+                </dt>
+                <dt>
+                    <a href="/hcil/academics/visiting-scholars.shtml">Visiting Scholars </a>
+                </dt>
+                <dt>
+                    <a href="/hcil/academics/class-websites.shtml">Class Websites</a>
+                </dt>
+            </dl>
+        </div>
+        <div id="flySponsorship" class="topNav">
+            <dl>
+                <dt>
+                    <a href="/hcil/sponsorship">Sponsor our Research</a>
+                </dt>
+                <dt>
+                    <a href="/hcil/sponsorship/symposiumsponsor.shtml">Sponsor our Annual Symposium</a>
+                </dt>
+                <dt>
+                    <a href="/hcil/sponsorship/sponsors.shtml">Active Sponsorship</a>
+                </dt>
+                <dt>
+                    <a href="/hcil/sponsorship/industrial-visitors.shtml">Industrial Visitors</a>
+                </dt>
+            </dl>
+        </div>
+        <!-- #EndLibraryItem --><!-- #BeginLibraryItem "/Library/searchHideR.lbi" -->
+        <div id="hideRTop">
+            <a href="javascript:;" onmouseover="CS_clearNav();MM_showHideLayers('fly-search','','hide','hideRTop','','hide')"><img src="/hcil/_img/spacer.gif" width="500" height="400" border="0" /></a>
+        </div><!-- #EndLibraryItem --><!-- #BeginLibraryItem "/Library/hiders.lbi" --><!-- drop down menus -->
+        <div id="hidea">
+            <a href="javascript:;" onclick="MM_showHideLayers('hidea','','hide')" onmouseover="CS_clearNav()" onmouseout="CS_clearNav()"><img src="/hcil/_img/spacer.gif" width="795" height="363" border="0" /></a>
+        </div>
+        <div id="hideTop">
+            <a href="javascript:;" onmouseover="CS_clearNav()" onmouseout="CS_clearNav()"><img src="/hcil/_img/spacer.gif" width="795" height="25" border="0" /></a>
+        </div><!-- #EndLibraryItem -->
+    </body>
+</html>

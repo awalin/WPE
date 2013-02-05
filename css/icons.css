@@ -1,0 +1,83 @@
+.icon, .icon-small {
+    background-color: transparent;
+    background-image: url(theme/icons.png);
+    background-repeat: no-repeat;
+    display: block;
+    height: 100px;
+    width: 100px;
+}
+
+.icon-small {
+    height: 50px;
+    width: 50px;    
+}
+
+.icon-dept          {  background-image: url(theme/icons-department.png); }
+.icon-dept-small    {  background-image: url(theme/icons-department-small.png); }
+
+.icon-dept-small-client-services-operations {     background-position: 0 0; }
+.icon-dept-small-consumer-marketing-analytics {  background-position: -50px 0; }
+.icon-dept-small-corporate-marketing-strategy {      background-position: -100px 0; }
+.icon-dept-small-engineering {        background-position: -150px 0; }
+.icon-dept-small-general-administrative {       background-position: -200px 0; }
+.icon-dept-small-government-affairs-legal {         background-position: -250px 0; }
+.icon-dept-small-product-management-user-experience {     background-position: -300px 0; }
+.icon-dept-small-sales-business-development {      background-position: -350px 0; }
+
+.icon-dept-client-services-operations {     background-position: 0 0; }
+.icon-dept-consumer-marketing-analytics {  background-position: -100px 0; }
+.icon-dept-corporate-marketing-strategy {      background-position: -200px 0; }
+.icon-dept-engineering {        background-position: -300px 0; }
+.icon-dept-general-administrative {       background-position: -400px 0; }
+.icon-dept-government-affairs-legal {         background-position: -500px 0; }
+.icon-dept-product-management-user-experience {     background-position: -600px 0; }
+.icon-dept-sales-business-development {      background-position: -700px 0; }
+
+
+
+
+/*  Arrow Icon Sprite */
+.icon-arrow {
+    background: transparent url(theme/sprite-simpleArrow.png) no-repeat;
+    margin: 0 auto;
+}
+
+.arrow-up-1 { background-position: 0 0;}
+.arrow-up-2 { background-position: -100px 0;}
+.arrow-up-3 { background-position: -200px 0;}
+.arrow-up-4 { background-position: -300px 0;}
+
+.arrow-right-1 { background-position: 0 -100px;}
+.arrow-right-2 { background-position: -100px -100px;}
+.arrow-right-3 { background-position: -200px -100px;}
+.arrow-right-4 { background-position: -300px -100px;}
+
+.arrow-down-1 { background-position: 0 -200px;}
+.arrow-down-2 { background-position: -100px -200px;}
+.arrow-down-3 { background-position: -200px -200px;}
+.arrow-down-4 { background-position: -300px -200px;}
+
+.arrow-left-1 { background-position: 0 -300px;}
+.arrow-left-2 { background-position: -100px -300px;}
+.arrow-left-3 { background-position: -200px -300px;}
+.arrow-left-4 { background-position: -300px -300px;}
+
+.arrow-light-up-1 { background-position: 0 -400px;}
+.arrow-light-up-2 { background-position: -100px -400px;}
+.arrow-light-up-3 { background-position: -200px -400px;}
+.arrow-light-up-4 { background-position: -300px -400px;}
+
+.arrow-light-right-1 { background-position: 0 -500px;}
+.arrow-light-right-2 { background-position: -100px -500px;}
+.arrow-light-right-3 { background-position: -200px -500px;}
+.arrow-light-right-4 { background-position: -300px -500px;}
+
+.arrow-light-down-1 { background-position: 0 -600px;}
+.arrow-light-down-2 { background-position: -100px -600px;}
+.arrow-light-down-3 { background-position: -200px -600px;}
+.arrow-light-down-4 { background-position: -300px -600px;}
+
+.arrow-light-left-1 { background-position: 0 -700px;}
+.arrow-light-left-2 { background-position: -100px -700px;}
+.arrow-light-left-3 { background-position: -200px -700px;}
+.arrow-light-left-4 { background-position: -300px -700px;}

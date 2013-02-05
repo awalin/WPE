@@ -1,0 +1,30 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: C:\wamp\www\WPE\Paper\Wrong-Patient-Error.aux
+The style file: IEEEtran.bst
+I couldn't open database file conf.bib
+---line 55 of file C:\wamp\www\WPE\Paper\Wrong-Patient-Error.aux
+ : \bibdata{conf
+ :              }
+I'm skipping whatever remains of this command
+I found no database files---while reading file C:\wamp\www\WPE\Paper\Wrong-Patient-Error.aux
+Warning--I didn't find a database entry for "danah"
+Warning--I didn't find a database entry for "Tweetgeist"
+Warning--I didn't find a database entry for "twitinfo"
+Warning--I didn't find a database entry for "Diakopoulos"
+Warning--I didn't find a database entry for "backchannel"
+Warning--I didn't find a database entry for "granular"
+Warning--I didn't find a database entry for "revolution"
+Warning--I didn't find a database entry for "disaster"
+Warning--I didn't find a database entry for "ross2011enabled"
+Warning--I didn't find a database entry for "eventgraph"
+Warning--I didn't find a database entry for "twitterinconf"
+Warning--I didn't find a database entry for "citation"
+Warning--I didn't find a database entry for "retweet"
+Warning--I didn't find a database entry for "million"
+Warning--I didn't find a database entry for "boyd2010tweet"
+Warning--I didn't find a database entry for "Smith09Analyzingsocialmedia"
+-- IEEEtran.bst version 1.13 (2008/09/30) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+
+Done.
+(There were 2 error messages)

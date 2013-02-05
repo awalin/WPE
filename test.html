@@ -1,0 +1,417 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta name="generator" content="Adobe GoLive" />
+<title>Your Website</title>
+<link rel="stylesheet" type="text/css" href="css/base.css" />
+<link rel="stylesheet" type="text/css" href="css/icons.css" />
+<!-- <script src="http://jqueryui.com/jquery-1.5.1.js"></script>
+	<script src="http://jqueryui.com/ui/jquery.ui.core.js"></script>
+	<script src="http://jqueryui.com/ui/jquery.ui.widget.js"></script>
+	<script src="http://jqueryui.com/ui/jquery.ui.accordion.js"></script>
+	 -->
+
+<script type="text/javascript">
+	function hideotherrows(id) {
+		//var s = '';
+		var divs = document.getElementsByTagName('tr'), d, i = 0;
+		while (d = divs[i++]) {
+			if (d.id.match(/988/)) {
+				if (d.id == id)
+					continue;
+
+				if (d.className == 'alternate-1')
+					d.className = " clear-1";
+				else
+					d.className = " clear-0";
+			}
+		}
+		//var oo = "arjun";
+
+		var t = setTimeout(function() {
+			gotoOrders(id)
+		}, 2000);
+
+	}
+	function gotoOrders(m) {
+		//alert(m);
+		window.location = "patient-order.php?MRN=" + m;
+	}
+</script>
+
+<style type="text/css">
+<!--
+tr.clear-0 {
+	background-color: #eee;
+}
+
+tr.clear-0 td a {
+	color: #eee ! important
+}
+
+tr.clear-1 {
+	background-color: #FFFFFF;
+}
+
+tr.clear-1 td a {
+	color: #FFFFFF ! important
+}
+
+tr.alternate-0 td a {
+	color: #000000;
+}
+
+tr.alternate-1 td a {
+	color: #000000;
+}
+-->
+</style>
+
+</head>
+<body>
+	<div class="clouds">
+		<div class="container">
+			<div class="span-6 first">
+				<div class="sidebar">
+					<a href="index.php" title="Logo"> <img class="logo"
+						src="http://www.mse.umd.edu/logos/images/UMD-logo.jpg"
+						width="230px" height="35px" alt="." /> </a>
+
+
+					<div class="navigation">
+						<ul class="nav-main rounded">
+
+							<li class="parent"><a href="index.php"
+								class="rounded-tl rounded-bl active"> My Patients</a></li>
+							<li class="parent"><a href="#" class=" ">ED Census </a></li>
+							<li class="parent"><a href="#" class="">My Alerts </a></li>
+							<li class="parent"><a href="#" class="  "> My Schedule</a></li>
+							<li class="parent"><a href="#" class=" rounded-bl ">
+									Contacts</a></li>
+						</ul>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="span-19 last">
+				<div class="page">
+					<div class="content">
+
+
+
+						<div style="background-color: #FFFFFF;">
+							<table border="0" width="100%">
+								<tr>
+									<td>
+										<h3>
+											<font color="#000000" style="font-size: 16px">Census
+												for care provider: 12 patients</font>
+
+										</h3>
+										<form class="search" action="/search" method="post">
+											<label for="q">Care Provider Number: </label><input id="q"
+												value="" placeholder="17659" /> <input type="submit"
+												class="hide" />
+										</form> <br /></td>
+									<td align="right" valign="top">
+										<button type="button">
+											<b>Log off</b>
+										</button> <br />
+										<table border="0">
+											<tr>
+												<td><img src="images/Printer.jpg" width='30px'
+													height='30px' alt=" " /></td>
+												<td><a href="javascript:window.print()">Print this
+														page</a></td>
+											</tr>
+										</table></td>
+
+								</tr>
+
+							</table>
+						</div>
+
+						<div class="space-top">
+							<font color="#000000" style="font-size: 16px"><b>Patient
+									List</b> </font> <br /> <br />
+							<table border='0' class='reset span-17'>
+								<tr class='alternate-1 space-bottom'
+									style='background-color: #000000;'>
+									<th><h3></h3>
+									</th>
+									<th><h3>Name</h3>
+									</th>
+									<th><h3>Age</h3>
+									</th>
+									<th><h3>Sex</h3>
+									</th>
+									<th><h3>MRN</h3>
+									</th>
+									<th><h3>DOB</h3>
+									</th>
+									<th><h3>Admit Date</h3>
+									</th>
+									<th><h3>Attn Doctor</h3>
+									</th>
+								</tr>
+								<tr class='alternate-1' id='988232'>
+									<td><img id='I988232' src='images/reg/P1.jpg' width='70px'
+										height='65px' alt='&nbsp;&nbsp;&nbsp;&nbsp;' />
+									</td>
+									<td><a onclick='hideotherrows("988232")'>Altman,
+											William</a>
+									</td>
+									<td><a onclick='hideotherrows("988232")'>82</a>
+									</td>
+									<td><a onclick='hideotherrows("988232")'>M</a>
+									</td>
+									<td><a onclick='hideotherrows("988232")'>988232</a>
+									</td>
+									<td><a onclick='hideotherrows("988232")'>11/23/1929</a>
+									</td>
+									<td><a onclick='hideotherrows("988232")'>07/23/2011</a>
+									</td>
+									<td><a onclick='hideotherrows("988232")'>Hollander,
+											John</a>
+									</td>
+								</tr>
+								<tr class='alternate-0' id='988234'>
+									<td><img id='I988234' src='images/reg/P2.jpg' width='70px'
+										height='65px' alt='&nbsp;&nbsp;&nbsp;&nbsp;' />
+									</td>
+									<td><a onclick='hideotherrows("988234")'>Dimassio,
+											Josh</a>
+									</td>
+									<td><a onclick='hideotherrows("988234")'>41</a>
+									</td>
+									<td><a onclick='hideotherrows("988234")'>M</a>
+									</td>
+									<td><a onclick='hideotherrows("988234")'>988234</a>
+									</td>
+									<td><a onclick='hideotherrows("988234")'>03/21/1970</a>
+									</td>
+									<td><a onclick='hideotherrows("988234")'>07/23/2011</a>
+									</td>
+									<td><a onclick='hideotherrows("988234")'>Goodman, Mary</a>
+									</td>
+								</tr>
+								<tr class='alternate-1' id='988235'>
+									<td><img id='I988235' src='images/reg/P3.jpg' width='70px'
+										height='65px' alt='&nbsp;&nbsp;&nbsp;&nbsp;' />
+									</td>
+									<td><a onclick='hideotherrows("988235")'>Driscoll,
+											Georges</a>
+									</td>
+									<td><a onclick='hideotherrows("988235")'>77</a>
+									</td>
+									<td><a onclick='hideotherrows("988235")'>M</a>
+									</td>
+									<td><a onclick='hideotherrows("988235")'>988235</a>
+									</td>
+									<td><a onclick='hideotherrows("988235")'>04/01/1934</a>
+									</td>
+									<td><a onclick='hideotherrows("988235")'>07/23/2011</a>
+									</td>
+									<td><a onclick='hideotherrows("988235")'>Elizabeth,
+											Harris</a>
+									</td>
+								</tr>
+								<tr class='alternate-0' id='988236'>
+									<td><img id='I988236' src='images/reg/P4.jpg' width='70px'
+										height='65px' alt='&nbsp;&nbsp;&nbsp;&nbsp;' />
+									</td>
+									<td><a onclick='hideotherrows("988236")'>Evans, Rachel</a>
+									</td>
+									<td><a onclick='hideotherrows("988236")'>58</a>
+									</td>
+									<td><a onclick='hideotherrows("988236")'>F</a>
+									</td>
+									<td><a onclick='hideotherrows("988236")'>988236</a>
+									</td>
+									<td><a onclick='hideotherrows("988236")'>05/27/1953</a>
+									</td>
+									<td><a onclick='hideotherrows("988236")'>07/24/2011</a>
+									</td>
+									<td><a onclick='hideotherrows("988236")'>Ben,
+											Schneider</a>
+									</td>
+								</tr>
+								<tr class='alternate-1' id='988237'>
+									<td><img id='I988237' src='images/reg/P5.jpg' width='70px'
+										height='65px' alt='&nbsp;&nbsp;&nbsp;&nbsp;' />
+									</td>
+									<td><a onclick='hideotherrows("988237")'>Fateesh,
+											Aboud</a>
+									</td>
+									<td><a onclick='hideotherrows("988237")'>54</a>
+									</td>
+									<td><a onclick='hideotherrows("988237")'>M</a>
+									</td>
+									<td><a onclick='hideotherrows("988237")'>988237</a>
+									</td>
+									<td><a onclick='hideotherrows("988237")'>07/23/1957</a>
+									</td>
+									<td><a onclick='hideotherrows("988237")'>07/24/2011</a>
+									</td>
+									<td><a onclick='hideotherrows("988237")'>Goodman, Mary</a>
+									</td>
+								</tr>
+								<tr class='alternate-0' id='988233'>
+									<td><img id='I988233' src='images/reg/P6.jpg' width='70px'
+										height='65px' alt='&nbsp;&nbsp;&nbsp;&nbsp;' />
+									</td>
+									<td><a onclick='hideotherrows("988233")'>Gomez, Fred</a>
+									</td>
+									<td><a onclick='hideotherrows("988233")'>52</a>
+									</td>
+									<td><a onclick='hideotherrows("988233")'>M</a>
+									</td>
+									<td><a onclick='hideotherrows("988233")'>988233</a>
+									</td>
+									<td><a onclick='hideotherrows("988233")'>05/11/1959</a>
+									</td>
+									<td><a onclick='hideotherrows("988233")'>07/23/2011</a>
+									</td>
+									<td><a onclick='hideotherrows("988233")'>Connors, Greg</a>
+									</td>
+								</tr>
+								<tr class='alternate-1' id='988239'>
+									<td><img id='I988239' src='images/reg/P7.jpg' width='70px'
+										height='65px' alt='&nbsp;&nbsp;&nbsp;&nbsp;' />
+									</td>
+									<td><a onclick='hideotherrows("988239")'>Holmes, Danny</a>
+									</td>
+									<td><a onclick='hideotherrows("988239")'>52</a>
+									</td>
+									<td><a onclick='hideotherrows("988239")'>M</a>
+									</td>
+									<td><a onclick='hideotherrows("988239")'>988239</a>
+									</td>
+									<td><a onclick='hideotherrows("988239")'>09/12/1959</a>
+									</td>
+									<td><a onclick='hideotherrows("988239")'>07/23/2011</a>
+									</td>
+									<td><a onclick='hideotherrows("988239")'>Connors, Greg</a>
+									</td>
+								</tr>
+								<tr class='alternate-0' id='988238'>
+									<td><img id='I988238' src='images/reg/P8.jpg' width='70px'
+										height='65px' alt='&nbsp;&nbsp;&nbsp;&nbsp;' />
+									</td>
+									<td><a onclick='hideotherrows("988238")'>Johnson, Emma</a>
+									</td>
+									<td><a onclick='hideotherrows("988238")'>54</a>
+									</td>
+									<td><a onclick='hideotherrows("988238")'>F</a>
+									</td>
+									<td><a onclick='hideotherrows("988238")'>988238</a>
+									</td>
+									<td><a onclick='hideotherrows("988238")'>02/28/1957</a>
+									</td>
+									<td><a onclick='hideotherrows("988238")'>07/23/2011</a>
+									</td>
+									<td><a onclick='hideotherrows("988238")'>Elizabeth,
+											Harris</a>
+									</td>
+								</tr>
+								<tr class='alternate-1' id='988241'>
+									<td><img id='I988241' src='images/reg/P9.jpg' width='70px'
+										height='65px' alt='&nbsp;&nbsp;&nbsp;&nbsp;' />
+									</td>
+									<td><a onclick='hideotherrows("988241")'>Poulson,
+											Samantha</a>
+									</td>
+									<td><a onclick='hideotherrows("988241")'>32</a>
+									</td>
+									<td><a onclick='hideotherrows("988241")'>F</a>
+									</td>
+									<td><a onclick='hideotherrows("988241")'>988241</a>
+									</td>
+									<td><a onclick='hideotherrows("988241")'>09/17/1979</a>
+									</td>
+									<td><a onclick='hideotherrows("988241")'>07/24/2011</a>
+									</td>
+									<td><a onclick='hideotherrows("988241")'>Albertson,
+											Susan</a>
+									</td>
+								</tr>
+								<tr class='alternate-0' id='988242'>
+									<td><img id='I988242' src='images/reg/P10.jpg'
+										width='70px' height='65px' alt='&nbsp;&nbsp;&nbsp;&nbsp;' />
+									</td>
+									<td><a onclick='hideotherrows("988242")'>Walsh, Nancy</a>
+									</td>
+									<td><a onclick='hideotherrows("988242")'>75</a>
+									</td>
+									<td><a onclick='hideotherrows("988242")'>F</a>
+									</td>
+									<td><a onclick='hideotherrows("988242")'>988242</a>
+									</td>
+									<td><a onclick='hideotherrows("988242")'>04/08/1936</a>
+									</td>
+									<td><a onclick='hideotherrows("988242")'>07/24/2011</a>
+									</td>
+									<td><a onclick='hideotherrows("988242")'>Ben,
+											Schneider</a>
+									</td>
+								</tr>
+								<tr class='alternate-1' id='988243'>
+									<td><img id='I988243' src='images/reg/P11.jpg' class="hide"
+										width='70px' height='65px' alt='&nbsp;&nbsp;&nbsp;&nbsp;' />
+									</td>
+									<td><a onclick='hideotherrows("988243")'>Willson,
+											Charlie</a>
+									</td>
+									<td><a onclick='hideotherrows("988243")'>67</a>
+									</td>
+									<td><a onclick='hideotherrows("988243")'>M</a>
+									</td>
+									<td><a onclick='hideotherrows("988243")'>988243</a>
+									</td>
+									<td><a onclick='hideotherrows("988243")'>06/12/1944</a>
+									</td>
+									<td><a onclick='hideotherrows("988243")'>07/23/2011</a>
+									</td>
+									<td><a onclick='hideotherrows("988243")'>Goodman, Mary</a>
+									</td>
+								</tr>
+								<tr class='alternate-0' id='988244'>
+									<td><img id='I988244' src='images/reg/P12.jpg'
+										width='70px' height='65px' alt='&nbsp;&nbsp;&nbsp;&nbsp;' />
+									</td>
+									<td><a onclick='hideotherrows("988244")'>Zeltser,
+											Emily</a>
+									</td>
+									<td><a onclick='hideotherrows("988244")'>38</a>
+									</td>
+									<td><a onclick='hideotherrows("988244")'>F</a>
+									</td>
+									<td><a onclick='hideotherrows("988244")'>988244</a>
+									</td>
+									<td><a onclick='hideotherrows("988244")'>10/12/1983</a>
+									</td>
+									<td><a onclick='hideotherrows("988244")'>07/24/2011</a>
+									</td>
+									<td><a onclick='hideotherrows("988244")'>Albertson,
+											Susan</a>
+									</td>
+								</tr>
+							</table>
+						</div>
+
+
+
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="footer">University of Maryland</div>
+			</div>
+		</div>
+	</div>
+
+
+
+</body>
+</html>

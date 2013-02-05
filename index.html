@@ -1,0 +1,189 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+	<head> 
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+    <meta charset="utf-8"> 
+    <title>Wrong Patient Error</title> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="description" content=""> 
+    <meta name="author" content="">   
+    <!-- Le styles --> 
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet"> 
+    <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet"> 
+    <link href="jquery/css/start/jquery-ui-1.8.23.custom.css" rel="stylesheet"> 
+    <link href="css/base.css" rel="stylesheet">
+	<script type="text/javascript" src="d3-v2/d3.v2.js"></script> 
+	<script type="text/javascript" src="d3-v2/time/time.js"></script> 
+	<script type="text/javascript" src="d3-v2/layout/layout.js"></script> 
+	<script type="text/javascript" src="d3-v2/geom/geom.js"></script> 
+	<script type="text/javascript" src="jslib/table.js"></script>
+	
+	<script type="text/javascript" src="jquery/jquery-1.6.2.min.js"></script> 
+	<script type="text/javascript" src="jquery/js/jquery-ui-1.8.16.custom.min.js"></script>  
+
+    
+<script type="text/javascript"> 
+
+var tabOption=0;
+ 
+$(document).ready(function() {
+ 
+// $("#tabs").tabs().addClass('ui-tabs-vertical ui-helper-clearfix');
+// $("#tabs li").removeClass('ui-corner-top').addClass('ui-corner-left');   
+   
+// var $tabs = $('#tabs').tabs();
+
+$('#tabs').bind('tabsselect', function(event, ui) {
+    // Objects available in the function context:
+    // ui.tab     // anchor element of the selected (clicked) tab
+    // ui.panel   // element, that contains the selected/clicked tab contents
+    // alert( ui.index );  // zero-based index of the selected (clicked) tab
+    tabOption= ui.index;
+    // alert(tabOption);  
+});
+   
+$("#submit-option").click(function(){
+   document.location.href='list.html';
+});
+ 
+});
+ 
+</script> 
+ 
+</head> 
+ 
+ 
+<body> 
+	
+ 
+    <div class="navbar navbar-inverse navbar-fixed-top"> 
+      <div class="navbar-inner"> 
+        <div class="container-fluid"> 
+         
+<!--           <a class="brand" href="#">Testing platform for wrong patient error</a>  -->
+          <div class="nav-collapse collapse"> 
+           
+            <ul class="nav"> 
+              <li class="active"><a href="#">Home</a></li> 
+              <li><a href="#about">About</a></li> 
+              <li><a href="#contact">Contact</a></li> 
+            </ul> 
+          </div><!--/.nav-collapse --> 
+        </div> 
+      </div> 
+    </div> 
+  
+    <div class="hero-unit" style="background-color: white;">  
+   <form action="list.html" type="get">
+    	<div style="border:1px; solid;">    
+
+    <div id="tabs" class="row-fluid span12">  
+	
+<!-- 	<ul> 
+		<li><a href="#tabs-1">Animated Transition</a></li> 
+		<li><a href="#tabs-2">Use of Photo</a></li>
+		<li><a href="#tabs-3">Use of Preview</a></li>  
+
+	</ul>  -->
+	
+
+	
+<div id="tabs-2" class="span3">  
+	<h5>Recall and Recognition: </h5>
+
+
+<input type="checkbox"  checked name="sel" value="yes">Use search, dynamic filtering, grouping, highlighting similar names<br/>
+<input type="checkbox"  checked name="info" value="yes">Use photo, age, room number, admission date<br/>	
+<table border="1">
+<tr>
+<th> &nbsp;</th>
+<th style="width:100px">In selection screen</th>
+<th style="width:100px">In order screen</th>
+</tr>
+<tr>
+<td>Picture</td>
+<td>&nbsp;<input type="checkbox" name="pic" value="yes" checked></td>
+<td>&nbsp;<input type="checkbox" name="vs" value="yes" ></td>
+</tr>
+<!-- <tr>
+<td>Visual summary</td>
+<td>&nbsp;<input type="checkbox" name="picd" value="yes" ></td>
+<td>&nbsp;<input type="checkbox" name="vsd" value="yes" ></td>
+</tr> -->
+</table>
+</div> 
+
+
+
+					
+<div id="tabs-1" class="span3">     
+		<h5>Selection</h5>
+			
+<!-- 			Configure transition from the 'Patient selection screen' to the 'Order screen'         -->
+		
+<!-- 		<form action=""> -->
+<br/><input type="checkbox"  checked name="hr" value="yes">Highlight row on mouse hovering<br>
+
+
+<h4>Highlight on departure</h4>
+<div style="padding-left: 20px">
+<input type="checkbox"  checked name="kr" value="yes">Keep selected row and hide other rows
+<br/><input type="checkbox"  checked name="kn" value="yes">Keep patient's name and hide other information
+
+<br/><input type="checkbox"  checked name="slow" value="yes">Slow animation
+</div>
+
+	</div> 
+	
+
+<div id="tabs-3" class="span3">  
+	<h5>Verification</h5>
+	
+<form>
+<h4>Highlight on arrival</h4>
+<div style="padding-left: 20px">
+<input type="checkbox"  checked name="anim" value="yes">Animate and move to top-left
+<br/><input type="checkbox"  checked name="arv" value="highlight">Highlight before showing other information
+<!-- <br/><input type="checkbox"  name="pol" value="change">Change polarity<br>  -->
+</div>	
+<h4>Confirmation before placing the order</h4>		
+<input type="radio"  name="pre" value="tp" checked>Use tooltip with name and photo before submission<br/>
+<input type="radio"  name="pre" value="bb">Use big submit button with name and photo<br/>
+<input type="radio"  name="pre" value="nh">Place the submit button near the header<br/>
+<!--  so patient info is visibke while submitting -->
+		</form>
+
+</div> 
+		
+
+<div id="tabs-4" class="span3">  
+ <h5>Error Detection and Recovery</h5>
+	
+<form>	
+<input type="checkbox"  checked name="dss" value="yes" checked>Use decision support system<br/>
+<!--  let the system detect if there is any mistake -->
+<input type="checkbox"  checked name="co" value="yes">Change patient keeping the same order<br/>
+		</form>
+
+</div> 
+ 
+ 
+  
+</div> <!-- end of the tab expansions -->
+
+<div style="clear:both;padding-top:20px;"><button id="submit-option" class="btn">Submit</button></div>
+ 
+
+   	 </div>
+   	  </form>
+</div> 
+ 
+</div> 
+</div>
+ 
+<!-- end of jquery demo  --> 
+ 
+ 
+      
+</body> 
+</html>
