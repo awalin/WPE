@@ -10,7 +10,7 @@
     <!-- Le styles --> 
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet"> 
     <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet"> 
-    <link href="jquery/css/start/jquery-ui-1.8.23.custom.css" rel="stylesheet"> 
+    <link href="jquery/css/smoothness/jquery-ui-1.8.16.custom.css" rel="stylesheet"> 
     <link href="css/base.css" rel="stylesheet">
 	<script type="text/javascript" src="d3-v2/d3.v2.js"></script> 
 	<script type="text/javascript" src="d3-v2/time/time.js"></script> 
@@ -19,7 +19,8 @@
 	<script type="text/javascript" src="jslib/table.js"></script>
 	
 	<script type="text/javascript" src="jquery/jquery-1.6.2.min.js"></script> 
-	<script type="text/javascript" src="jquery/js/jquery-ui-1.8.16.custom.min.js"></script>  
+<!-- 	<script type="text/javascript" src="jquery/js/jquery-ui-1.8.16.custom.min.js"></script> -->
+	<script type="text/javascript" src="jquery/js/jquery.cookie.js"></script>    
 
     
 <script type="text/javascript"> 
@@ -28,142 +29,410 @@ var tabOption=0;
  
 $(document).ready(function() {
  
-// $("#tabs").tabs().addClass('ui-tabs-vertical ui-helper-clearfix');
-// $("#tabs li").removeClass('ui-corner-top').addClass('ui-corner-left');   
-   
-// var $tabs = $('#tabs').tabs();
-
 $('#tabs').bind('tabsselect', function(event, ui) {
-    // Objects available in the function context:
-    // ui.tab     // anchor element of the selected (clicked) tab
-    // ui.panel   // element, that contains the selected/clicked tab contents
-    // alert( ui.index );  // zero-based index of the selected (clicked) tab
     tabOption= ui.index;
-    // alert(tabOption);  
 });
    
-$("#submit-option").click(function(){
-   document.location.href='list.html';
+$('#departure').change( function () {
+	
+    if ($('#departure').is(":checked")) {    	// console.log("chek");
+        // $("#transition input[type='radio']").attr("disabled",false);
+         $("#transition input[type='radio']").attr("disabled", false);
+    } else {
+    	// console.log("un");
+        $("#transition input[type='radio']").attr("disabled", true);
+    }
 });
+
+
+$('#arrival').change( function () {
+	
+    if ($('#arrival').is(":checked")) {
+    	// console.log("chek");
+        // $("#transition input[type='radio']").attr("disabled",false);
+         $("#spotlight input[type='radio']").attr("disabled", false);
+    } else {
+    	// console.log("un");
+        $("#spotlight input[type='radio']").attr("disabled", true);
+    }
+});
+
+$('#totop').change( function () {	
+    if ($('#totop').is(":checked")) {
+    	// console.log("chek");
+        // $("#transition input[type='radio']").attr("disabled",false);
+         $("#animation input[type='radio']").attr("disabled", false);
+    } else {
+    	// console.log("un");
+        $("#animation input[type='radio']").attr("disabled", true);
+    }
+});
+
+$("#submit-option").click(function(){ 
+ 
+   $.cookie("pic",  $('input[name=pic]').val());
+   $.cookie("otherinfo",    $('input[name=otherinfo]').val());
+   $.cookie('hr',  $('input[name=hr]').val());
+   $.cookie("transition", $('input[name=transition]').val());
+   $.cookie("anim");
+   $.cookie("spotlight", $("input[name=spotlight]").val() );
+   $.cookie("totop");
+   $.cookie("arv");    
+
+   $("#target").submit();	
+});
+
+$("#submit-option-worst").click(function(){
+   $('input[name=transition]').attr('checked', false);
+   $('input[name=totop]').attr('checked', false);
+   $('input[name=hr]').attr('checked', false);
+   $('input[name=arv]').attr('checked', false);
+   $('input[name=pic]').attr('checked', false);
+   $('input[name=otherinfo]').attr('checked', false);     
+   $('input[name=polarity]').attr('checked', true);     
+      
+   $("#target").submit();	
+});
+
+
+$("#submit-option-fast").click(function(){
+   $('input[name=transition]').attr('checked', true);
+   $('input[name=totop]').attr('checked', true);
+   $('input[name=hr]').attr('checked', true);
+   $('input[name=arv]').attr('checked', true);
+   $('input[name=pic]').attr('checked', true);
+   $('input[name=otherinfo]').attr('checked', true);     
+   $('input[name=polarity]').attr('checked', false);
+   
+   $("input:radio[name='spotlight']").filter( "[value='fast']").attr('checked', 'checked');
+   $("input:radio[name='anim']").filter( "[value='fast']").attr('checked', 'checked');
+   $("input:radio[name='trans']").filter( "[value='fast']").attr('checked', 'checked');       
+      
+   $("#target").submit();	
+});  
  
 });
  
 </script> 
+</head>  
  
-</head> 
- 
- 
-<body> 
-	
- 
-    <div class="navbar navbar-inverse navbar-fixed-top"> 
+<body> 	 
+    <div class="navbar navbar-fixed-top"> 
       <div class="navbar-inner"> 
-        <div class="container-fluid"> 
-         
+        <div class="container-fluid">         
 <!--           <a class="brand" href="#">Testing platform for wrong patient error</a>  -->
-          <div class="nav-collapse collapse"> 
-           
+          <div class="nav-collapse collapse">           
             <ul class="nav"> 
               <li class="active"><a href="#">Home</a></li> 
-              <li><a href="#about">About</a></li> 
-              <li><a href="#contact">Contact</a></li> 
+             <!--  <li><a href="#about">About</a></li> 
+              <li><a href="#contact">Contact</a></li>  -->
+              <li><a href="help.html">Help</a></li> 
             </ul> 
           </div><!--/.nav-collapse --> 
         </div> 
       </div> 
     </div> 
   
-    <div class="hero-unit" style="background-color: white;">  
-   <form action="list.html" type="get">
-    	<div style="border:1px; solid;">    
+    <div class="hero-unit" style="background-color: white;padding-left:4px;padding-top:4px;">  
+   <form action="list.html" type="get" id="target">
+    <div  style="padding-top: -20px;">    
 
-    <div id="tabs" class="row-fluid span12">  
+<div id="tabs" class="row-fluid span12" style="padding-top: -20px;">  
 	
-<!-- 	<ul> 
-		<li><a href="#tabs-1">Animated Transition</a></li> 
-		<li><a href="#tabs-2">Use of Photo</a></li>
-		<li><a href="#tabs-3">Use of Preview</a></li>  
+<div class="span4">
 
-	</ul>  -->
-	
+<div id="tabs-2">
+<div style="clear: both">	
+<h3>Facilitate recall </h3> </div>
 
-	
-<div id="tabs-2" class="span3">  
-	<h5>Recall and Recognition: </h5>
-
-
-<input type="checkbox"  checked name="sel" value="yes">Use search, dynamic filtering, grouping, highlighting similar names<br/>
-<input type="checkbox"  checked name="info" value="yes">Use photo, age, room number, admission date<br/>	
-<table border="1">
-<tr>
-<th> &nbsp;</th>
-<th style="width:100px">In selection screen</th>
-<th style="width:100px">In order screen</th>
-</tr>
-<tr>
-<td>Picture</td>
-<td>&nbsp;<input type="checkbox" name="pic" value="yes" checked></td>
-<td>&nbsp;<input type="checkbox" name="vs" value="yes" ></td>
-</tr>
-<!-- <tr>
-<td>Visual summary</td>
-<td>&nbsp;<input type="checkbox" name="picd" value="yes" ></td>
-<td>&nbsp;<input type="checkbox" name="vsd" value="yes" ></td>
-</tr> -->
-</table>
-</div> 
-
-
-
-					
-<div id="tabs-1" class="span3">     
-		<h5>Selection</h5>
-			
-<!-- 			Configure transition from the 'Patient selection screen' to the 'Order screen'         -->
-		
-<!-- 		<form action=""> -->
-<br/><input type="checkbox"  checked name="hr" value="yes">Highlight row on mouse hovering<br>
-
-
-<h4>Highlight on departure</h4>
-<div style="padding-left: 20px">
-<input type="checkbox"  checked name="kr" value="yes">Keep selected row and hide other rows
-<br/><input type="checkbox"  checked name="kn" value="yes">Keep patient's name and hide other information
-
-<br/><input type="checkbox"  checked name="slow" value="yes">Slow animation
+<div style="clear:both;padding: 4px;padding-top:5px">
+<div style="float:left;"><input type="checkbox"  checked name="group" value="yes"></div>
+<div style="float:left;padding-top: 4px;padding-left:4px">Facilitate  grouping</div>
 </div>
 
-	</div> 
-	
+<div style="clear:both;padding: 4px;padding-top:5px">
+<div style="float:left;"><input type="checkbox"  checked name="sort" value="yes"/></div>
+<div style="float:left;padding-top: 4px;padding-left:4px">Allow sorting in list</div>
+</div>
+<div style="clear:both;padding: 4px;padding-top:5px">
+<div style="float:left;"><input type="checkbox"  checked name="simname" value="yes"/></div>
+<div style="float:left;padding-top: 4px;padding-left:4px">Highlight similar names</div>
+</div>
 
-<div id="tabs-3" class="span3">  
-	<h5>Verification</h5>
+<div style="clear:both;padding: 4px;padding-top:5px">
+<div style="float:left;"><input type="checkbox"  checked name="pic" value="yes"></div>
+<div style="float:left;padding-top: 4px;padding-left:4px">Use photo, or male/female icon</div>
+</div>
+
+<div style="clear:both;padding: 4px;padding-top:5px">
+<div style="float:left;"><input type="checkbox"  checked name="otherinfo" value="yes"></div>
+<div style="float:left;padding-top: 4px;padding-left:4px;width:90%">Show more info (age, room #, admission date)</div>
+</div>		
+
+<div style="clear: both;padding-top:30px;"><h3>Facilitate selection</h3> </div>
+			
+<div style="clear:both;padding: 4px;padding-top:5px">
+<div style="float:left;"><input type="checkbox" checked name="hr" value="yes"></div>
+<div style="float:left;padding-top: 4px;padding-left:4px;width:90%">Highlight row under cursor</div>
+</div>
+
+
+<div style="clear:both;padding: 4px;padding-top:5px">
+<div style="float:left;"><input type="checkbox" checked name="grid" value="no"></div>
+<div style="float:left;padding-top: 4px;padding-left:4px;width:90%">Use 2D grid</div>
+</div>
+
+
+<div style="clear:both;padding: 4px;padding-top:5px">
+<div style="float:left;"><input type="checkbox" checked name="gap" value="yes"></div>
+<div style="float:left;padding-top: 4px;padding-left:4px;width:90%">Insert gap between rows</div>
+</div>
+
+<div style="clear:both;padding: 4px;padding-top:5px">
+<div style="float:left;"><input type="checkbox"  checked name="search" value="yes"></div>
+<div style="float:left;padding-top: 4px;padding-left:4px">Provide search and dynamic filtering</div>
+</div>
+
+
+<div style="clear:both;padding: 4px;padding-top:5px">
+<div style="float:left;padding-top: 4px;">Font size:</div>
+<div style="float:left;padding-left:5px;">
 	
-<form>
-<h4>Highlight on arrival</h4>
-<div style="padding-left: 20px">
-<input type="checkbox"  checked name="anim" value="yes">Animate and move to top-left
-<br/><input type="checkbox"  checked name="arv" value="highlight">Highlight before showing other information
-<!-- <br/><input type="checkbox"  name="pol" value="change">Change polarity<br>  -->
+	<select name="font" style="width:60px">
+								<option style="width:15px; height: 12px;" value="10" >10</option>
+								<option style="width:15px; height: 12px;" value="12">12</option>
+								<option style="width:15px; height: 12px;" value="14">14</option>
+								<option style="width:15px; height: 12px;" value="16" selected>16</option>
+								<option style="width:15px; height: 12px;" value="18">18</option>
+								<option style="width:15px; height: 12px;" value="20">20</option>
+								<option style="width:15px; height: 12px;" value="22">22</option>
+								<option style="width:15px; height: 12px;" value="24">24</option>
+								
+	</select>
+	
+	</div>
+	<div style="float:left;padding-top: 4px;">px</div>
+
+</div>
+
+
+
+<div style="clear:both;padding: 4px;padding-top:5px">
+<div style="float:left;padding-top: 4px;">Row height:</div>
+<div style="float:left;padding-left:5px;">
+	
+	<select name="rowheight" style="width:60px">
+								<option style="width:15px; height: 12px;" value="35" selected>30</option>
+								<option style="width:15px; height: 12px;" value="35" >35</option>
+								<option style="width:15px; height: 12px;" value="40">40</option>
+								<option style="width:15px; height: 12px;" value="45">45</option>
+								<option style="width:15px; height: 12px;" value="50">50</option>
+								<option style="width:15px; height: 12px;" value="55">55</option>
+								<option style="width:15px; height: 12px;" value="60">60</option>
+	</select>	
+	</div>
+<div style="float:left;padding-top: 4px;">px</div>
+</div>
+</div>
+</div>
+
+<div id="tabs-3" class="span4">  
+	<h3>Selection verification</h3>
+	
+<div style="clear:both;padding: 4px;padding-top:5px">
+<!-- <div style="float:left;"><input type="checkbox" checked name="show" value="yes"></div> -->
+<div style="float:left;padding-top: 4px;">
+	
+<div style="float:left;"><input type="checkbox"  checked name="transition" value="yes" id="departure"></div>
+<div style="float:left;padding-top: 4px;padding-left:4px">Transition of selected row on departure</div>
+<!-- 	confirm selection   -->
+<div id="transition">
+<div style="float:left;padding-left:20px;clear:both;padding-top:5px;">
+<div style="float:left;padding-top:4px;padding-right:4px;"><b>Keep selected:</b></div>
+<div style="float:left;">
+<div style="float:left;">	
+<input type="radio"  name="kr" value="name" checked></div>
+<div style="float:left;padding:4px;">Name <!-- 	(with no animation to the top) -->
+</div>
+	
+<div style="float:left;clear:both">
+<input type="radio"name="kr" value="row"> </div>
+<div style="float:left;padding:4px;">Row </div>
+
+<!-- <div style="float:left;">
+<input type="radio"name="kr" value="none"> </div>
+<div style="float:left;padding:4px;">None </div> -->
+
+</div>
+</div>
+
+<div style="float:left;padding-left:20px;clear:both;padding-top:5px;">
+<div style="float:left;padding-top: 4px;">
+
+<div>
+<div style="float:left;padding-top:4px;padding-right:4px;"><b>Transition speed:</b></div>
+<!-- <div style="float:left;">
+<input type="radio"name="anim" value="none"> </div>
+<div style="float:left;padding:4px;">None</div> -->
+<div style="float:left;">
+<div style="float:left;clear:both">
+<input type="radio" name="trans" value="fast" checked> </div>
+<div style="float:left;padding:4px;">Fast (200 milisec)</div>
+
+
+<div style="float:left;clear:both">	
+<input type="radio"  name="trans" value="slow" checked></div>
+<div style="float:left;padding:4px;">Slow (1000 milisec)
+<!-- 	(with no animation to the top) -->
 </div>	
-<h4>Confirmation before placing the order</h4>		
-<input type="radio"  name="pre" value="tp" checked>Use tooltip with name and photo before submission<br/>
-<input type="radio"  name="pre" value="bb">Use big submit button with name and photo<br/>
-<input type="radio"  name="pre" value="nh">Place the submit button near the header<br/>
-<!--  so patient info is visibke while submitting -->
-		</form>
+
+
+<div style="clear:both">
+<div style="float:left;">
+<input type="radio"name="trans" value="custom"> 
+</div>
+<div style="float:left;padding:4px;">Custom</div>
+
+<div style="float:left;padding-top: 4px;">
+	<input type="text" name="customsecondtrans" style="float:left;width:50px;height:12px;">	</div>
+</div>
+</div>
+</div>
+</div>
+
+</div> 
+</div>
+
+</div>
+
+</div>
+	
+<div style="clear:both;padding: 4px;padding-top:5px">
+<div style="float:left;padding-top: 4px;">
+<!-- 	Connect selected entry to the final location -->
+<!-- <input type="checkbox"  checked name="anim" value="yes">Animate and move to final location -->
+<!-- <br/> -->
+<div style="float:left;"><input type="checkbox"  checked name="arv" value="highlight" id="arrival"></div>
+<div style="float:left;padding-top: 4px;padding-left:4px">Highlight name on arrival, then show other information</div>
+
+<div style="float:left;padding-left:20px;padding-top:5px" id="spotlight">
+<div style="float:left;padding-top:4px;padding-right:4px;"><b>Highlight duration:</b></div>
+
+<div style="float:left;">
+<div style="float:left;clear:both">
+<input type="radio" name="spotlight" value="fast"> </div>
+<div style="float:left;padding:4px;">Fast (200 milisec)</div>
+
+<div style="float:left;clear:both">	
+<input type="radio"  name="spotlight" value="slow" checked></div>
+<div style="float:left;padding:4px;">Slow (1000 milisec)
+<!-- 	(with no animation to the top) -->
+</div>	
+
+
+<div style="clear:both">
+<div style="float:left;">
+<input type="radio"name="spotlight" value="custom"> 
+</div>
+<div style="float:left;padding:4px;">Custom</div>
+
+<div style="float:left;padding-top: 4px;">
+	<input type="text" name="customsecondspot" style="float:left;width:50px;height:12px;">	</div>
+</div>
+</div>
+</div>
+</div>	
+</div>
+
+
+
+<div style="clear:both;padding: 4px;padding-top:5px">
+<div style="float:left;padding-top: 4px;">
+<!-- 	Connect selected entry to the final location -->
+<!-- <input type="checkbox"  checked name="anim" value="yes">Animate and move to final location -->
+<!-- <br/> -->
+<div style="float:left;"><input type="checkbox" checked name="totop" value="yes" id="totop"></div>
+<div style="float:left;padding-top: 4px;padding-left:4px">Animate selected entry to the final location</div>
+
+
+<div style="float:left;padding-left:20px;padding-top:5px" id="animation">
+<div style="float:left;padding-top:4px;padding-right:4px;"><b>Animation speed:</b></div>
+
+<div style="float:left;">
+<div style="float:left;clear:both">
+<input type="radio"name="anim" value="fast"> </div>
+<div style="float:left;padding:4px;">Fast (200 milisec)</div>
+
+
+<div style="float:left;clear:both">	
+<input type="radio"  name="anim" value="slow" checked></div>
+<div style="float:left;padding:4px;">Slow (1000 milisec)
+<!-- 	(with no animation to the top) -->
+</div>	
+
+
+<div style="clear:both">
+<div style="float:left;">
+<input type="radio"name="anim" value="custom"> 
+</div>
+<div style="float:left;padding:4px;">Custom</div>
+
+<div style="float:left;padding-top: 4px;">
+	<input type="text" name="customsecondanim" style="float:left;width:50px;height:12px;">	</div>
+</div>
+</div>
+</div>
+</div>	
+</div>
+
+	
 
 </div> 
 		
 
-<div id="tabs-4" class="span3">  
- <h5>Error Detection and Recovery</h5>
+<div id="tabs-4" class="span4">  
+ <h3>Error detection and recovery</h3>
+
+<div style="clear:both;padding: 4px;padding-top:5px">
+<div style="float:left;padding-top: 4px;">
+<!-- <input type="checkbox" name="bigger" value="yes">Make the title bigger -->
+<div style="float:left;"><input type="checkbox" name="polarity" value="yes"></div>
+<div style="float:left;padding-top: 4px;padding-left:4px">Change polarity of the title</div>
+<!-- <br/><input type="checkbox"  name="pol" value="change">Change polarity<b/r>  -->
+</div>	
+</div>
 	
-<form>	
-<input type="checkbox"  checked name="dss" value="yes" checked>Use decision support system<br/>
+<div style="clear:both;padding: 4px;padding-top:5px">
+<div style="float:left;padding-top: 4px;">Confirmation before placing the order
+		
+<div style="float:left;padding-left:20px;">
+
+<div style="float:left;">
+<div style="float:left;"><input type="radio"  name="pre" value="tp" checked></div>
+<div style="float:left;padding:4px;">Use tooltip with name and photo</div>
+</div>
+
+<div style="float:left;clear:both">
+	<div style="float:left;"><input type="radio"  name="pre" value="bb"></div>
+<div style="float:left;padding:4px;">Use big submit button with name and photo</div></div>
+
+<div style="float:left;clear: both">
+<div style="float:left;"><input type="radio"  name="pre" value="nh">
+</div>
+<div style="float:left;padding:4px;">Place the submit button near the header</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div style="float:left;clear: both">
+<input type="checkbox"  checked name="dss" value="yes" checked>Use decision support system</div>
 <!--  let the system detect if there is any mistake -->
-<input type="checkbox"  checked name="co" value="yes">Change patient keeping the same order<br/>
-		</form>
+<div style="float:left;clear: both">
+<input type="checkbox"  checked name="co" value="yes">Change patient keeping the same order
+</div>
+
 
 </div> 
  
@@ -171,15 +440,21 @@ $("#submit-option").click(function(){
   
 </div> <!-- end of the tab expansions -->
 
-<div style="clear:both;padding-top:20px;"><button id="submit-option" class="btn">Submit</button></div>
+<!-- <div style="clear:both;padding-top:20px;"><button id="submit-option-slow" class="btn btn-mini">Demo with slow animation</button></div> -->
+
+<div style=";padding:20px;float:left"><div id="submit-option-worst" class="btn">Submit with worst case scenario</div></div>
+<!-- <div style="clear:both;padding:20px;"><button id="submit-option-best" class="btn">Submit with highlight</button></div> -->
+<div style=";padding:20px;float:left"><div id="submit-option" class="btn">Submit</div></div>
+<div style=";padding:20px;float:left"><div id="submit-option-fast" class="btn">Submit with fast animation</div></div>
+
  
 
    	 </div>
    	  </form>
 </div> 
  
-</div> 
-</div>
+<!-- </div>  -->
+<!-- </div> -->
  
 <!-- end of jquery demo  --> 
  

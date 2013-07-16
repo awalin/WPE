@@ -2,18 +2,18 @@
 //Enter Data
 $arr = array(
 "header" => array("","Name","Age","Sex","MRN","DOB","Admit Date","Attn Doctor"),
-"row1" => array("&nbsp;&nbsp;&nbsp;&nbsp;<br /> <br /> <br />","William Altman","82","M","988232","11/23/1929","07/23/2011","Hollander John"),
-"row2" => array("&nbsp;&nbsp;&nbsp;&nbsp;<br /> <br /> <br />","Josh Dimassio","41","M","988234","03/21/1970","07/23/2011","Goodman Mary"),
-"row3" => array("&nbsp;&nbsp;&nbsp;&nbsp;<br /> <br /> <br />","Georges Driscoll","77","M","988235","04/01/1934","07/23/2011","Elizabeth Harris"),
-"row4" => array("&nbsp;&nbsp;&nbsp;&nbsp;<br /> <br /> <br />","Rachel Evans","58","F","988236","05/27/1953","07/24/2011","Ben Schneider"),
-"row5" => array("&nbsp;&nbsp;&nbsp;&nbsp;<br /> <br /> <br />","Fateesh Aboud","54","M","988237","07/23/1957","07/24/2011","Goodman Mary"),
-"row6" => array("&nbsp;&nbsp;&nbsp;&nbsp;<br /> <br /> <br />","Gomez Fred","52","M","988233","05/11/1959","07/23/2011","Hoffman Kenneth"),
-"row7" => array("&nbsp;&nbsp;&nbsp;&nbsp;<br /> <br /> <br />","Danny Holmes","52","M","988239","09/12/1959","07/23/2011","Hoffman Kenneth"),
-"row8" => array("&nbsp;&nbsp;&nbsp;&nbsp;<br /> <br /> <br />","Emma Johnson","54","F","988238","02/28/1957","07/23/2011","Ben Schneider"),
-"row9" => array("&nbsp;&nbsp;&nbsp;&nbsp;<br /> <br /> <br />","Samantha Poulson","32","F","988241","09/17/1979","07/24/2011","Hoffman Kenneth"),
-"row10" => array("&nbsp;&nbsp;&nbsp;&nbsp;<br /> <br /> <br />","Nancy Walsh","75","F","988242","04/08/1936","07/24/2011","Albertson Susan"),
-"row11" => array("&nbsp;&nbsp;&nbsp;&nbsp;<br /> <br /> <br />","Willson, Charlie","67","M","988243","06/12/1944","07/23/2011","Goodman Mary"),
-"row12" => array("&nbsp;&nbsp;&nbsp;&nbsp;<br /> <br /> <br />","Zeltser, Emily","38","F","988244","10/12/1973","07/24/2011","Franks Georges")
+"row1" => array("&nbsp;&nbsp;&nbsp;&nbsp;<br/> <br />","William Altman","82","M","988232","11/23/1929","07/23/2011","Hollander John"),
+"row2" => array("&nbsp;&nbsp;&nbsp;&nbsp;<br/> <br />","Josh Dimassio","41","M","988234","03/21/1970","07/23/2011","Goodman Mary"),
+"row3" => array("&nbsp;&nbsp;&nbsp;&nbsp;<br/> <br />","Georges Driscoll","77","M","988235","04/01/1934","07/23/2011","Elizabeth Harris"),
+"row4" => array("&nbsp;&nbsp;&nbsp;&nbsp;<br/> <br />","Rachel Evans","58","F","988236","05/27/1953","07/24/2011","Ben Schneider"),
+"row5" => array("&nbsp;&nbsp;&nbsp;&nbsp;<br/> <br />","Fateesh Aboud","54","M","988237","07/23/1957","07/24/2011","Goodman Mary"),
+"row6" => array("&nbsp;&nbsp;&nbsp;&nbsp;<br/> <br />","Gomez Fred","52","M","988233","05/11/1959","07/23/2011","Hoffman Kenneth"),
+"row7" => array("&nbsp;&nbsp;&nbsp;&nbsp;<br/> <br />","Danny Holmes","52","M","988239","09/12/1959","07/23/2011","Hoffman Kenneth"),
+"row8" => array("&nbsp;&nbsp;&nbsp;&nbsp;<br/> <br />","Emma Johnson","54","F","988238","02/28/1957","07/23/2011","Ben Schneider"),
+"row9" => array("&nbsp;&nbsp;&nbsp;&nbsp;<br/> <br />","Samantha Poulson","32","F","988241","09/17/1979","07/24/2011","Hoffman Kenneth"),
+"row10" => array("&nbsp;&nbsp;&nbsp;&nbsp;<br/> <br />","Nancy Walsh","75","F","988242","04/08/1936","07/24/2011","Albertson Susan"),
+"row11" => array("&nbsp;&nbsp;&nbsp;&nbsp;<br/> <br />","Willson, Charlie","67","M","988243","06/12/1944","07/23/2011","Goodman Mary"),
+"row12" => array("&nbsp;&nbsp;&nbsp;&nbsp;<br/> <br />","Zeltser, Emily","38","F","988244","10/12/1973","07/24/2011","Franks Georges")
 );
 
 //With Pics
@@ -97,277 +97,276 @@ function getAttDoc($mrn){
 //HARD CODING PATIENT SPECIFIC INFORMATION TO BE DISPLAYED
 $patient_info= array(
 "988232" => "
-<u>
+<div style='float:left;padding-left:30px;'>
 <i>Vital signs:</i>
-</u>
-<br /> <br />
+<br/>
  - Temperature: 98.7 oF<br>
  - Blood Pressure: 135/90<br>
  - Pulse: 75 BMP<br>
  - Respiration: 17 breaths/min<br>
 <br />
-<u>
+</div>
+
+
+<div style='float:left;padding-left:30px;'>
 <i>Medical History:</i>
-</u>
-<br /> <br />
+
+<br/>
  - Osteoarthritis.<br>
  - History of stroke with manifestation on right side.<br>
 <br />
-<u>
+</div>
+
+
+
+<div style='float:left;padding-left:30px;'>
 <i>Allergies:</i>
-</u>
-<br /> <br />
+
+<br/>
  - Dust<br>
  - No Known Drug Allergies<br>
 <br />
-<u>
+</div>
+<div style='float:left;padding-left:30px;'>
 <i>Medications: </i>
-</u>
-<br /> <br />
+
+<br/>
  - Acetaminophen (Osteoarthritis)
+ </div>
 ",
 "988234" => "
 
-<u>
+<div style='float:left;padding-left:30px;'>
 <i>Vital signs:</i>
-</u>
 
-<br /> <br />
+
+<br/>
 
  - Temperature: 902.7 oF <br>
  - Blood Pressure: 115/78 <br>
  - Pulse: 67 BMP<br>
  - Respiration: 15<br>
 
-<br /> <br />
-<i><u> Medications: </u></i>
-<br /> <br />
+<br/>
+</div>
+
+<div style='float:left;padding-left:30px;'> <i>Medications: </i></div>
+<br/>
 
  - Tetanus
-
+</div>
 ",
 "988236" => "
-<u>
+<div style='float:left;padding-left:30px;'>
 <i>Vital signs:</i>
-</u>
 
-<br /><br />
+
+<br/>
 
  - Temperature: 98.7 oF<br>
  - Blood Pressure: 132/84<br>
  - Pulse: 68 BMP<br>
  - Respiration: 14<br>
  <br />
+</div>
 
-<u>
-<i><b>Medications: </b></i>
-</u>
-<br /> <br />
+<div style='float:left;padding-left:30px;'>
+<i>Medications: </i>
+
+<br/>
 
  - Pneumonia
-
+</div>
 ",
 "988237" => "
-<u>
+<div style='float:left;padding-left:30px;'>
 <i>Vital signs:</i>
-</u>
-<br /><br />
-
+<br/>
  - Temperature: 99 oF <br>
  - Blood Pressure: 122/84 <br>
  - Pulse: 72 BMP<br>
  - Respiration: 17 breaths/min<br>
 
-<br />
+</div>
 
-
-<u>
+<div style='float:left;padding-left:30px;'>
 <i>Medical History:</i>
-</u>
-<br /><br />
-
+<br/>
  - None <br>
+</div>
 
-<br />
-
-
-<u>
+<div style='float:left;padding-left:30px;'>
 <i>Allergies:</i>
-</u>
-<br /><br />
-
+<br/>
 - Gluten<br>
 - No Known Drug Allergies
- <br>
+</div>
 
-<br />
-
-
-<u>
+<div style='float:left;padding-left:30px;'>
 <i>Medications:</i>
-</u>
-<br /><br />
+<br/>
  - None
-
+</div>
 ",
 "988236" => "
 
-<u>
-<i><b>Vital signs:</b></i>
-</u>
-<br /><br />
+<div style='float:left;padding-left:30px;'>
+<i>Vital signs:</i>
+
+<br/>
 
  - Temperature: 98.7 oF<br>
  - Blood Pressure: 132/84<br>
  - Pulse: 68 BMP<br>
  - Respiration: 14<br>
  <br /> </br >
+</div>
+<div style='float:left;padding-left:30px;'>
+<i>Medications: </i>
 
-<u>
-<i><b>Medications: </b></i>
-</u>
-<br /><br />
+<br/>
 
  - Pneumonia
-
+</div>
 " 
 ,
 "988239" =>"
 
-<u>
+<div style='float:left;padding-left:30px;'>
 <i>Vital signs:</i>
-</u>
-
-<br /><br />
+<br/>
 
  - Temperature: 98.7 oF <br>
  - Blood Pressure: 123/82 <br>
  - Pulse: 74 BMP<br>
  - Respiration: 16 breaths/min<br>
 
-<br /><br />
+<br/>
+</div>
 
-<u>
+<div style='float:left;padding-left:30px;'>
 <i>Medical History:</i>
-</u>
 
-<br /><br />
+
+<br/>
 
  - Asthma <br>
 <br>
-
-<u>
+</div>
+<div style='float:left;padding-left:30px;'>
 <i>Allergies:</i>
-</u>
 
-<br /><br />
+
+<br/>
 
  - Pollen <br>
  -  No Known Drug Allergies<br>
 
 
 <br />
-
-<u>
+</div>
+<div style='float:left;padding-left:30px;'>
 <i>Medications:</i>
-</u>
 
-<br /><br />
+
+<br/>
 
  - Albuterol (asthma)
+ </div>
 
 ",
 "988241" =>" 
-<u>
+<div style='float:left;padding-left:30px;'>
 <i>Vital signs:</i>
-</u>
-<br /><br />
+
+<br/>
 
  - Temperature: 97.8 oF <br>
  - Blood Pressure: 115/78 <br>
  - Pulse: 67 BMP<br>
  - Respiration: 15 breaths/min<br>
 
-<br /> <br />
+<br/>
+</div>
 
 
-<u>
+<div style='float:left;padding-left:30px;'>
 <i>Medical History:</i>
-</u>
-<br /><br />
+
+<br/>
 
  - No significant history <br>
 
-<br /> <br />
+<br/>
+</div>
 
-
-<u>
+<div style='float:left;padding-left:30px;'>
 <i>Allergies:</i>
-</u>
-<br /><br />
+
+<br/>
 
  - Penicillin <br>
 
-<br /> <br />
+<br/>
+</div>
 
-
-<u>
+<div style='float:left;padding-left:30px;'>
 <i>Medications:</i>
-</u>
+
 
  <br />
  - Oral Contraceptive Pill
-
+</div>
 ",
 "988242" => "
-<u>
+<div style='float:left;padding-left:30px;'>
 <i>Vital signs:</i>
-</u>
-<br />
+
  <br />
  - Temperature: 902.7 oF <br>
  - Blood Pressure: 115/78 <br>
  - Pulse: 67 BMP<br>
  - Respiration: 15<br>
+ </div>
 
 
 ",
 "988243" =>"
-<u>
+<div style='float:left;padding-left:30px;'>
 <i>Vital signs:</i>
-</u>
-<br /><br />
+
+<br/>
 
  - Temperature: 98.7 oF <br>
  - Blood Pressure: 135/90 <br>
  - Pulse: 82 BMP<br>
  - Respiration: 18 breaths/min<br>
 
-<br /><br />
-
-<u>
+<br/>
+</div>
+<div style='float:left;padding-left:30px;'>
 <i>Medical History:</i>
-</u>
-<br /><br />
+
+<br/>
 
  - Coronary artery disease <br>
  - Hypertension <br>
 
-<br /><br />
-
-<u>
+<br/>
+</div>
+<div style='float:left;padding-left:30px;'>
 <i>Allergies:</i>
-</u>
-<br /><br />
+
+<br/>
 
  - No Known Drug Allergies <br>
 
-<br /><br />
-
-<u>
+<br/>
+</div>
+<div style='float:left;padding-left:30px;'>
 <i>Medications:</i>
-</u>
-<br /><br />
+</div>
+<br/>
 
 - Hydrochlorothiazide (Hypertension)<br>
 - Aspirin (CAD)
@@ -375,10 +374,10 @@ $patient_info= array(
 
 ",
 "988244" =>"
-<u>
+<div style='float:left;padding-left:30px;'>
 <i>Vital signs:</i>
-</u>
-<br /><br />
+
+<br/>
 
 
 - Temperature: 98.3 oF <br>
@@ -387,23 +386,25 @@ $patient_info= array(
 - Respiration: 17 breaths/min<br>
 
 
-<br /><br />
-    <u><i>Medical History</i></u>
+<br/>
+</div>
+    <div style='float:left;padding-left:30px;'><i>Medical History</i>
 	<br>
 	- Obesity<br>
 	- Hypertension<br>
 	
-	<br><br>
-    <u><i>Allergies</i></u>	
-	<br><br>
+	<br/>
+	</div>
+    <div style='float:left;padding-left:30px;'><i>Allergies</i></div>	
+	<br/>
 	- No Known Drug Allergies<br>
 	
     <br />
 
-<u>
+<div style='float:left;padding-left:30px;'>
 <i>Medications: </i>
-</u>
-<br /><br />
+</div>
+<br/>
 
  - Simvastatin (high cholesterol)
 

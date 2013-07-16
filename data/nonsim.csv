@@ -1,0 +1,9 @@
+Image,Name,Id,Sex,Age,Complaint,Admitted on,Room,Physician
+images/reg/P1.jpg,"Altman, William  ",988232,M,82,Heart ache,7/23/2011,A212,"Hollander, John "
+images/reg/P4.jpg,"Evans, Rachel ",988236,F,58,Heart ache,7/24/2011,B423,"Schneider, Ben"
+images/reg/P5.jpg,"Fateesh,  Aboud",988237,M,54,Fever,7/24/2011,C112,"Goodman, Mary"
+images/reg/P6.jpg," Gomez, Fred",988233,M,52,Arthritis,7/23/2011,A500,"Hoffman, Kenneth"
+images/reg/P7.jpg,"Holmes, Danny ",988239,M,52,Kidney,7/23/2011,C200,"Hoffman, Kenneth "
+images/reg/P8.jpg,"Johnson, Emma",988238,F,54,Muscle pain,7/23/2011,M300,"Schneider, Ben "
+images/reg/P9.jpg,"Deen, Samantha",988241,F,32,Arthritis,7/24/2011,F211,"Hoffman, Kenneth "
+images/reg/P10.jpg,"Walsh, Nancy",988242,F,75,Lever,7/24/2011,E435,"Albertson, Susan "
